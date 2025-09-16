@@ -64,8 +64,9 @@ echo $ALIAS_IDE >> ~/.bashrc
 
 # Install pycharm
 if [ -f /etc/NIXOS ]; then
-   export NIXPKGS_ALLOW_UNFREE=1
-   nix profile install nixpkgs#jetbrains.pycharm-community --impure
+    echo "INFO: Installing Pycharm..."
+    export NIXPKGS_ALLOW_UNFREE=1
+    nix profile install nixpkgs#jetbrains.pycharm-community --impure
 fi
 
 # ===== DOWNLOAD SUBJECTS =====
@@ -76,12 +77,15 @@ if [ -z "$TOKEN" ]; then
 fi
 
 # WARNING: putting tokens in URLs can leak via bash history/logs
+echo "INFO: Cloning Mario Python..."
 git clone "https://epita:${TOKEN}@github.com/t-lrm/mario-python.git" "$OUT_PATH" 2> git_error.log
+
+echo "INFO: Cloning Chip 8..."
 git clone "https://epita:${TOKEN}@github.com/t-lrm/chip-8.git" "$OUT_PATH/sujet-3" 2>> git_error.log
 history -c
 
 if grep -q "Authentication failed" git_error.log || grep -q "access denied" git_error.log; then
-    echo "Error: The provided token is expired or invalid. Please contact $CONTACT to get a new one."
+    echo "\e[31mError:\e[0m The provided token is expired or invalid. Please contact $CONTACT to get a new one."
     exit 1
 fi
 
