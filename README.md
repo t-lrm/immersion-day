@@ -7,13 +7,13 @@ We create two private repos:
 - `mario-python`
 
 We create another private repos:
-- `journee-immersion`
+- `journees-immersion`
 
 We create two workflows that exports `chip-8` and `mario-python` removing the correction files.
 
-We generate a read-only access token to the repo `journee-immersion`.
+We generate a read-only access token to the repo `journees-immersion`.
 
-We create a setup script to clone the repo `journee-immersion` using the secret token.
+We create a setup script to clone the repo `journees-immersion` using the secret token.
 
 We host this script and setup an IP to whitelist computer from the PIE.
 
