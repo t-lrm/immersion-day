@@ -6,7 +6,7 @@ CONTACT="timothee.le-roux-maertens@epita.fr"
 
 URL_MARIO="https://github.com/t-lrm/mario-python.git"
 URL_CHIP8="https://github.com/t-lrm/chip-8.git"
-TOKEN=""
+TOKEN="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"
 
 OUT_PATH="$HOME/subjects"
 
