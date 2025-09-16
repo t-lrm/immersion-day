@@ -42,7 +42,7 @@ ALIAS_IDE="alias ide=\"(export PYCHARM_PYTHON_PATH=$PYTHON3_PATH && nohup pychar
 
 # Show a warning if the output path already exists
 if [ -d "$OUT_PATH" ]; then
-    echo "\e[33mWarning:\e[0m This script will erase the content of '$OUT_PATH' if it exists."
+    echo -e "\e[33mWarning:\e[0m This script will erase the content of '$OUT_PATH' if it exists."
     read -p "Do you want to continue? (y/n) " -n 1 -r
     echo   # move to a new line
 
@@ -73,7 +73,7 @@ fi
 # ===== DOWNLOAD SUBJECTS =====
 
 if [ -z "$TOKEN" ]; then
-    echo "Error: No token provided. Please contact $CONTACT to get one."
+    echo -e "\e[31mError:\e[0m No token provided. Please contact $CONTACT to get one."
     exit 1
 fi
 
@@ -86,7 +86,7 @@ git clone "https://epita:${TOKEN}@github.com/t-lrm/chip-8.git" "$OUT_PATH/sujet-
 history -c
 
 if grep -q "Authentication failed" git_error.log || grep -q "access denied" git_error.log; then
-    echo "\e[31mError:\e[0m The provided token is expired or invalid. Please contact $CONTACT to get a new one."
+    echo -e "\e[31mError:\e[0m The provided token is expired or invalid. Please contact $CONTACT to get a new one."
     exit 1
 fi
 
