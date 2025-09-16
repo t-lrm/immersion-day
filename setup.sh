@@ -28,9 +28,9 @@ INIT_TEXT="Hello, bienvenue en séance de TP !\n"\
 "\n"\
 "Aujourd'hui vous allez faire un TP en python. Comme remarqué nous ne sommes pas sous Windows, bienvenue sur NixOS !\n"\
 "\n"\
-"\$$CMD_LIST\n\t----------------------------------------------\n"\
+"$CMD_LIST\n\t----------------------------------------------\n"\
 "\n"\
-"\$MOD + shift + q pour fermer cette fenêtre, et n'hésitez pas à nous solliciter :)"
+"$MOD + shift + q pour fermer cette fenêtre, et n'hésitez pas à nous solliciter :)"
 
 INIT_CMD="i3-msg floating enable > /dev/null && echo -e \"$INIT_TEXT\" && kill \"$ALACRITTY_PID\""
 
