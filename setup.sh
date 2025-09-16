@@ -14,23 +14,21 @@ ALACRITTY_PID=$(pgrep -o -x alacritty)
 
 MOD="win"
 
-CMD_LIST="Voici le kit de survie pour vous familiariser avec votre nouvel environnement !\n
+CMD_LIST="Voici le kit de survie pour vous familiariser avec votre nouvel environnement :\n
 \t$MOD + d: chercher un programme.\n
 \t$MOD + shift + q: fermer une fenêtre.\n
-\t$MOD + [number]: accéder au workspace n°[number].*\n
+\t$MOD + [number]: accéder au workspace n°[number].\n
 \t$MOD + entrée: ouvrir un nouveau terminal.\n
 \tls: lister les fichiers du dossier actuel.\n
 \tcd: rentrer dans les fichiers.\n
 \tide: lancer l'IDE pycharm (a faire dans un terminal)\n
 \taled: afficher ces commandes."
 
-INIT_TEXT="Hello, bienvenue en séance de TP !\n"\
-"\n"\
-"Aujourd'hui vous allez faire un TP en python. Comme remarqué nous ne sommes pas sous Windows, bienvenue sur NixOS !\n"\
-"\n"\
-"$CMD_LIST\n\t----------------------------------------------\n"\
-"\n"\
-"$MOD + shift + q pour fermer cette fenêtre, et n'hésitez pas à nous solliciter :)"
+INIT_TEXT="Bonjour et bienvenue en séance de TP !\n\n"\
+"Aujourd'hui vous allez faire un TP en python. Comme remarqué nous ne sommes pas sous Windows, bienvenue sur NixOS !\n\n"\
+"$CMD_LIST\n\n"\
+"----------------------------------------------\n\n"\
+"\t$MOD + shift + q pour fermer cette fenêtre, et n'hésitez pas à nous solliciter :)"
 
 INIT_CMD="i3-msg floating enable > /dev/null && echo -e \"$INIT_TEXT\" && kill \"$ALACRITTY_PID\""
 
