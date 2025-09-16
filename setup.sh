@@ -42,7 +42,7 @@ ALIAS_IDE="alias ide=\"(export PYCHARM_PYTHON_PATH=$PYTHON3_PATH && nohup pychar
 
 # Show a warning if the output path already exists
 if [ -d "$OUT_PATH" ]; then
-    echo "Warning: This script will erase the content of '$OUT_PATH' if it exists."
+    echo "\e[33mWarning:\e[0m This script will erase the content of '$OUT_PATH' if it exists."
     read -p "Do you want to continue? (y/n) " -n 1 -r
     echo   # move to a new line
 
