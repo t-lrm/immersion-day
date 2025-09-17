@@ -1,0 +1,35 @@
+stages: [export]
+
+export_exercise_snapshot:
+  stage: export
+  image: alpine:latest
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == "main"'
+  before_script:
+    - apk add --no-cache git rsync
+    - git config --global user.email "ci-bot@epita.fr"
+    - git config --global user.name  "CI Bot"
+  script: |
+    set -euo pipefail
+
+
+    rm -rf out
+    git clone --depth=1 "https://oauth2:${WRITE_TOKEN}@gitlab.cri.epita.fr/timothee.le-roux-maertens/ji.git" out
+
+    mkdir -p out/sujet-3
+    rsync -a --delete \
+      --exclude '.git/' \
+      --exclude '.gitignore' \
+      --exclude 'README.md' \
+      --exclude '/Emudev/bits.py' \
+      --exclude '/Emudev/cpu.py' \
+      ./ out/sujet-3
+
+    cd out
+    git add -A
+    if ! git diff --cached --quiet; then
+      git commit -m "CI/CD export"
+      git push origin main
+    else
+      echo "No changes to export."
+    fi
