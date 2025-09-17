@@ -26,3 +26,14 @@ We destroy the file and clear the history when done.
 3. Give it a name (and a description if you want)
 4. Select the repositories you want
 5. Add a `Content` permission with `Read-only`
+
+## Setup Gitlab Token
+
+Here are the steps to allow a CI/CD to push some commits to repos:
+1. Go to `https://gitlab.cri.epita.fr/-/user_settings/personal_access_tokens`
+2. Generate a token with the property `write_repository`
+
+3. Go to the section `Settings > CI/CD > Variables` of your repo containing the CI/CD
+4. Add a variable with the name you want
+5. Now you can use it in your CI/CD
+
