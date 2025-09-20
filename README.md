@@ -35,7 +35,11 @@ Here are the steps to allow a CI/CD to push some commits to repos:
 
 ## Setup Gitlab clone token
 
-TODO
+To create a repository-base token, follow those instructions:
+1. Open your GitLab project.
+2. Go to Settings → Repository → Deploy tokens.
+3. Add a name, expiry date, and select `read_repository`.
+4. Now you can use it with `git clone https://<USERNAME>:<TOKEN>@gitlab.cri.epita.fr/<NAMESPACE>/<REPO>.git`
 
 ## Contact
 
