@@ -3,8 +3,8 @@
 ## Correction
 
 The correction of the exercices are here:
-- [https://gitlab.cri.epita.fr/timothee.le-roux-maertens/chip-8]
-- [https://gitlab.cri.epita.fr/timothee.le-roux-maertens/mario-python]
+- https://gitlab.cri.epita.fr/timothee.le-roux-maertens/chip-8
+- https://gitlab.cri.epita.fr/timothee.le-roux-maertens/mario-python
 
 If you're a member of the Team JI you should have an access to those repos.
 If it's not the case please [contact me](#contact).
