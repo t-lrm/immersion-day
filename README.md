@@ -1,39 +1,43 @@
 # Journées d’immersion
 
+## Correction
+
+The correction of the exercices are here:
+- [https://gitlab.cri.epita.fr/timothee.le-roux-maertens/chip-8]
+- [https://gitlab.cri.epita.fr/timothee.le-roux-maertens/mario-python]
+
+If you're a member of the Team JI you should have an access to those repos.
+If it's not the case please [contact me](#contact).
+
 ## Architecture
 
-We create two private repos:
+We create three private repositories:
 - `chip-8`
 - `mario-python`
-
-We create another private repos:
 - `journees-immersion`
 
-We create two workflows that exports `chip-8` and `mario-python` removing the correction files.
+Two CI/CD pipelines are set up for chip-8 and mario-python, exporting the repos inside `journees-immersion` ensuring
+the correction files are excluded from the exports.
 
-We generate a read-only access token to the repo `journees-immersion`.
+A read-only access token is generated for the `journees-immersion` repository. Using this token, we write a setup
+script that clones the repository, and host the script at `ji.baunky.fr`.
 
-We create a setup script to clone the repo `journees-immersion` using the secret token.
+Finally, we configure a whitelist so that only EPITA PIE computers can access `ji.baunky.fr`.
 
-We host this script and setup an IP to whitelist computer from the PIE.
-
-We destroy the file and clear the history when done.
-
-## Setup Github Token
-
-1. Go to Settings → Developer settings → Personal access tokens → Fine-grained tokens
-2. Click Generate new token.
-3. Give it a name (and a description if you want)
-4. Select the repositories you want
-5. Add a `Content` permission with `Read-only`
-
-## Setup Gitlab Token
+## Setup Gitlab Personnal Access Token (PAT)
 
 Here are the steps to allow a CI/CD to push some commits to repos:
 1. Go to `https://gitlab.cri.epita.fr/-/user_settings/personal_access_tokens`
 2. Generate a token with the property `write_repository`
-
 3. Go to the section `Settings > CI/CD > Variables` of your repo containing the CI/CD
 4. Add a variable with the name you want
 5. Now you can use it in your CI/CD
+
+## Setup Gitlab clone token
+
+TODO
+
+## Contact
+
+You can contact me by email at `timothee.le-roux-maertens@epita.fr` or on Discord (`baunky`).
 
