@@ -4,8 +4,8 @@
 
 CONTACT="timothee.le-roux-maertens@epita.fr"
 
-URL_MARIO="https://github.com/t-lrm/mario-python.git"
-URL_CHIP8="https://github.com/t-lrm/chip-8.git"
+# Repo credentials
+USER="epita"
 TOKEN=""
 
 OUT_PATH="$HOME/subjects"
@@ -76,11 +76,9 @@ if [ -z "$TOKEN" ]; then
 fi
 
 # WARNING: putting tokens in URLs can leak via bash history/logs
-echo "INFO: Cloning Mario Python..."
-git clone "https://epita:${TOKEN}@github.com/t-lrm/mario-python.git" "$OUT_PATH" 2> git_error.log
+echo "INFO: Cloning..."
+git clone "https://${USER}:${TOKEN}@gitlab.cri.epita.fr/timothee.le-roux-maertens/ji.git" "$OUT_PATH" 2> git_error.log
 
-echo "INFO: Cloning Chip 8..."
-git clone "https://epita:${TOKEN}@github.com/t-lrm/chip-8.git" "$OUT_PATH/sujet-3" 2>> git_error.log
 history -c
 
 if grep -q "Authentication failed" git_error.log || grep -q "access denied" git_error.log; then
@@ -96,6 +94,9 @@ rm -f git_error.log
 # Open terminal
 nohup alacritty --hold -e sh -c "$INIT_CMD" &> /dev/null
 
-# Clean history
+# ===== CLEAN =====
+
+rm "$OUT_PATH/setup.sh"
+rm "$OUT_PATH/README.md"
 history -c
 
