@@ -1,5 +1,14 @@
 # Journées d’immersion
 
+## TODO
+
+[ ] Check if the whitelist works
+[ ] Check if `setup.sh` works correctly with the Token
+[ ] Check if the test suites works (and is up to date) for each subject
+[ ] Check if I can auto skip the onboarding of Pycharm
+[ ] Check if I can create run configuration for each test suite
+[ ] Check if I can create obfuscate the test suites (or create a moulinette ??)
+
 ## Correction
 
 The correction of the exercices are here:
@@ -16,14 +25,16 @@ We create three private repositories:
 - `mario-python`
 - `journees-immersion`
 
-Two CI/CD pipelines are set up for chip-8 and mario-python, exporting the repos inside `journees-immersion` ensuring
-the correction files are excluded from the exports.
+Two CI/CD pipelines are set up for chip-8 and mario-python, exporting the repos
+inside `journees-immersion` ensuring the correction files are excluded from the
+exports.
 
-A read-only access token is generated for the `journees-immersion` repository. Using this token, we write a setup
-script (`setup.sh`) that clones the repository, and host the script at `ji.baunky.fr`.
+A read-only access token is generated for the `journees-immersion` repository.
+Using this token, we write a setup script (`setup.sh`) that clones the
+repository, and host the script at `ji.baunky.fr`.
 
-Finally, we configure a whitelist so that only EPITA PIE computers can access `ji.baunky.fr`.
-Every IP was added manually to only allow Strasbourg computers.
+Finally, we configure a whitelist so that only EPITA PIE computers can access
+`ji.baunky.fr`. Every IP was added manually to only allow Strasbourg computers.
 
 ## Setup Gitlab Personnal Access Token (PAT)
 
