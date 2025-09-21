@@ -23,6 +23,7 @@ A read-only access token is generated for the `journees-immersion` repository. U
 script (`setup.sh`) that clones the repository, and host the script at `ji.baunky.fr`.
 
 Finally, we configure a whitelist so that only EPITA PIE computers can access `ji.baunky.fr`.
+Every IP was added manually to only allow Strasbourg computers.
 
 ## Setup Gitlab Personnal Access Token (PAT)
 
