@@ -42,13 +42,14 @@ ALIAS_IDE="alias ide=\"(export PYCHARM_PYTHON_PATH=$PYTHON3_PATH && nohup pychar
 if [ -d "$OUT_PATH" ]; then
     echo -e "\e[33mWarning:\e[0m This script will erase the content of '$OUT_PATH' if it exists."
     read -p "Do you want to continue? (y/n) " -n 1 -r
-    echo   # move to a new line
 
     if [[ ! $REPLY =~ ^[Yy]$ ]]
     then
-        echo "Aborting."
+        echo -e "\nAborting."
         exit 1
     fi
+
+    echo   # move to a new line
 fi
 
 # ===== SETUP =====
@@ -79,8 +80,6 @@ fi
 echo "INFO: Cloning..."
 git clone "https://${USER}:${TOKEN}@gitlab.cri.epita.fr/timothee.le-roux-maertens/ji.git" "$OUT_PATH" 2> git_error.log
 
-history -c
-
 if grep -q "Authentication failed" git_error.log || grep -q "access denied" git_error.log; then
     echo -e "\e[31mError:\e[0m The provided token is expired or invalid. Please contact $CONTACT to get a new one."
     exit 1
@@ -89,14 +88,17 @@ fi
 cat git_error.log
 rm -f git_error.log
 
-# ===== OPEN TERMINAL =====
-
-# Open terminal
-nohup alacritty --hold -e sh -c "$INIT_CMD" &> /dev/null
-
 # ===== CLEAN =====
 
 rm "$OUT_PATH/setup.sh"
 rm "$OUT_PATH/README.md"
-history -c
+rm -r "$OUT_PATH/.git"
+
+# Clear history
+rm ~/.bash_history
+
+# ===== OPEN TERMINAL =====
+
+# Open terminal
+nohup alacritty --hold -e sh -c "$INIT_CMD" &> /dev/null
 
