@@ -9,6 +9,13 @@
 - [ ] Check if I can create run configuration for each test suite
 - [ ] Check if I can create obfuscate the test suites (or create a moulinette ??)
 
+## Setup
+
+To setup a computer:
+1. Boot on `Prepa`
+2. Open a new terminal (Mod + D)
+3. Run `curl -fsSL test.fr | sh`
+
 ## Correction
 
 The correction of the exercices are here:
