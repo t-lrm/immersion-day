@@ -2,12 +2,12 @@
 
 ## TODO
 
-[ ] Check if the whitelist works
-[ ] Check if `setup.sh` works correctly with the Token
-[ ] Check if the test suites works (and is up to date) for each subject
-[ ] Check if I can auto skip the onboarding of Pycharm
-[ ] Check if I can create run configuration for each test suite
-[ ] Check if I can create obfuscate the test suites (or create a moulinette ??)
+- [ ] Check if the whitelist works
+- [ ] Check if `setup.sh` works correctly with the Token
+- [ ] Check if the test suites works (and is up to date) for each subject
+- [ ] Check if I can auto skip the onboarding of Pycharm
+- [ ] Check if I can create run configuration for each test suite
+- [ ] Check if I can create obfuscate the test suites (or create a moulinette ??)
 
 ## Correction
 
