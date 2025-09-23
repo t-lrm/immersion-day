@@ -4,9 +4,9 @@
 
 CONTACT="timothee.le-roux-maertens@epita.fr"
 
-# Repo credentials
-USER="epita"
-TOKEN=""
+# Host informations (substitute by server.py)
+IP="__IP__"
+PORT="__PORT__"
 
 OUT_PATH="$HOME/subjects"
 
@@ -71,31 +71,7 @@ fi
 
 # ===== DOWNLOAD SUBJECTS =====
 
-if [ -z "$TOKEN" ]; then
-    echo -e "\e[31mError:\e[0m No token provided. Please contact $CONTACT to get one."
-    exit 1
-fi
-
-# WARNING: putting tokens in URLs can leak via bash history/logs
-echo "INFO: Cloning..."
-git clone "https://${USER}:${TOKEN}@gitlab.cri.epita.fr/timothee.le-roux-maertens/ji.git" "$OUT_PATH" 2> git_error.log
-
-if grep -q "Authentication failed" git_error.log || grep -q "access denied" git_error.log; then
-    echo -e "\e[31mError:\e[0m The provided token is expired or invalid. Please contact $CONTACT to get a new one."
-    exit 1
-fi
-
-cat git_error.log
-rm -f git_error.log
-
-# ===== CLEAN =====
-
-rm "$OUT_PATH/setup.sh"
-rm "$OUT_PATH/README.md"
-rm -r "$OUT_PATH/.git"
-
-# Clear history
-rm ~/.bash_history
+wget --miror --no-parent "$OUT_PATH" "$IP:$PORT"
 
 # ===== OPEN TERMINAL =====
 
