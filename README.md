@@ -2,8 +2,8 @@
 
 ## TODO
 
-- [ ] Check if the whitelist works
-- [ ] Check if `setup.sh` works correctly with the Token
+- [ ] Check if the `server.py` works correctly
+- [ ] Check if the `setup.sh` works correctly
 - [ ] Check if the test suites works (and is up to date) for each subject
 - [ ] Check if I can auto skip the onboarding of Pycharm
 - [ ] Check if I can create run configuration for each test suite
