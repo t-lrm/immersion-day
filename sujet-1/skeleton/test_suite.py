@@ -96,7 +96,6 @@ def test_print_triangle():
     test.add([1], "*\n")
     test.add([5], "*\n**\n***\n****\n*****\n")
     test.run()
-    
 
 def test_print_square():
     test = Test("print_square", print_square, True)
@@ -139,7 +138,6 @@ def test_print_pyramid():
     s = "    *    \n   ***   \n  *****  \n ******* \n*********\n"
     test.add([5], s)
     test.run()
-
 
 def test_count_division():
     test = Test("count_division", count_division)

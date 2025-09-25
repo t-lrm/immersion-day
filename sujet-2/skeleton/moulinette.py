@@ -35,7 +35,7 @@ class Test:
         if index_to_test == -1:
             print("Impossible de tester la fonction " + self.name + "(): aucune valeur de retour n'est attendue")
             return
-        
+
         if not self.read_input:
             # Check if the function is defined and check if there is an error
             try: 
