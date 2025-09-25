@@ -1,6 +1,6 @@
-from EmuDev.cpu import Cpu
-from Moulinette.unit_test import AssertEqualAfterExecution
-from Moulinette.moulinette import TestSuite
+from sujet_3.EmuDev.cpu import Cpu
+from sujet_3.Moulinette.unit_test import AssertEqualAfterExecution
+from sujet_3.Moulinette.moulinette import TestSuite
 
 cpu = Cpu()
 

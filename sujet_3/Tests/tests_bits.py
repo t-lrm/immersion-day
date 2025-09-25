@@ -1,6 +1,6 @@
-from EmuDev import bits
-from Moulinette.unit_test import AssertOutput
-from Moulinette.moulinette import Moulinette, TestSuite
+from sujet_3.EmuDev import bits
+from sujet_3.Moulinette.unit_test import AssertOutput
+from sujet_3.Moulinette.moulinette import Moulinette, TestSuite
 
 moulinette = Moulinette()
 

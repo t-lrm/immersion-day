@@ -1,6 +1,6 @@
-from Moulinette.printer import Printer
-from Moulinette.test_suite import TestSuite
-from Moulinette.unit_test import UnitTest, AssertOutput, AssertEqualAfterExecution, ThrowException
+from sujet_3.Moulinette.printer import Printer
+from sujet_3.Moulinette.test_suite import TestSuite
+from sujet_3.Moulinette.unit_test import UnitTest, AssertOutput, AssertEqualAfterExecution, ThrowException
 
 class Moulinette:
     def __init__(self):

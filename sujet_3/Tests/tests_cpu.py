@@ -1,4 +1,4 @@
-from Moulinette.moulinette import Moulinette
+from sujet_3.Moulinette.moulinette import Moulinette
 from test_handle_0 import test_handle_0
 from test_handle_1 import test_handle_1
 from test_handle_2 import test_handle_2

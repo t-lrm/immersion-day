@@ -1,5 +1,5 @@
 import keyboard
-from EmuDev.custom_types import UShort
+from sujet_3.EmuDev.custom_types import UShort
 
 
 class Keypad:

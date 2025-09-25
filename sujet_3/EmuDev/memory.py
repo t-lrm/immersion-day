@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from EmuDev.custom_types import UShort, Byte
+from sujet_3.EmuDev.custom_types import UShort, Byte
 
 
 class Memory:

@@ -1,7 +1,7 @@
 import traceback
 import os
-from Moulinette.printer import Printer
-from Moulinette.unit_test import UnitTest, AssertOutput, AssertEqualAfterExecution, ThrowException, AssertEqual, \
+from sujet_3.Moulinette.printer import Printer
+from sujet_3.Moulinette.unit_test import UnitTest, AssertOutput, AssertEqualAfterExecution, ThrowException, AssertEqual, \
     AssertNotEqual, Execute
 
 

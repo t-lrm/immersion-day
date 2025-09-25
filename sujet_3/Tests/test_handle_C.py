@@ -1,7 +1,7 @@
 import random
-from EmuDev.cpu import Cpu
-from Moulinette.unit_test import AssertEqualAfterExecution, AssertEqual
-from Moulinette.test_suite import TestSuite
+from sujet_3.EmuDev.cpu import Cpu
+from sujet_3.Moulinette.unit_test import AssertEqualAfterExecution, AssertEqual
+from sujet_3.Moulinette.test_suite import TestSuite
 
 # When running 'rng.randint(0, 255)' the values will be 0x39, 0x0C, 0x8C, 0x7D, 0x72, 0x47, 0x34
 cpu = Cpu(random.Random(42))

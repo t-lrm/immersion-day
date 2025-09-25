@@ -1,8 +1,8 @@
-from EmuDev.cpu import Cpu
-from EmuDev.keypad import Keypad
-from EmuDev.custom_types import Byte
-from Moulinette.unit_test import AssertEqualAfterExecution
-from Moulinette.test_suite import TestSuite
+from sujet_3.EmuDev.cpu import Cpu
+from sujet_3.EmuDev.keypad import Keypad
+from sujet_3.EmuDev.custom_types import Byte
+from sujet_3.Moulinette.unit_test import AssertEqualAfterExecution
+from sujet_3.Moulinette.test_suite import TestSuite
 
 
 def is_pressed(keycode: Byte):
