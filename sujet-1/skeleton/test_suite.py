@@ -2,10 +2,12 @@ from main import *
 from math import pi
 from moulinette import *
 
+
 def test_print_mario():
     test = Test("print_mario", print_mario, True)
     test.add([], "Hello, Mario!\n")
     test.run()
+
 
 def test_getMarioAge():
     test = Test("getMarioAge", get_mario_age)
@@ -16,6 +18,7 @@ def test_getMarioAge():
     test.add([0], 25)
     test.add([-10], 15)
     test.run()
+
 
 def test_diff():
     test = Test("diff", diff)
@@ -29,6 +32,7 @@ def test_diff():
     test.add([12, -12], 24)
     test.run()
 
+
 def test_perimeter():
     test = Test("perimeter", perimeter)
     test.add([1], 2 * pi)
@@ -38,6 +42,7 @@ def test_perimeter():
     test.add([-2], -4 * pi)
     test.run()
 
+
 def test_and_gate():
     test = Test("and_gate", and_gate)
     test.add([True, False], False)
@@ -46,6 +51,7 @@ def test_and_gate():
     test.add([False, False], False)
     test.run()
 
+
 def test_or_gate():
     test = Test("or_gate", or_gate)
     test.add([True, False], True)
@@ -53,6 +59,7 @@ def test_or_gate():
     test.add([True, True], True)
     test.add([False, False], False)
     test.run()
+
 
 def test_max():
     test = Test("max", max)
@@ -80,6 +87,7 @@ def test_give_grade():
     test.add([22], "Note invalide\n")
     test.run()
 
+
 def test_sum_number():
     test = Test("sum_number", sum_number)
     test.add([1], 1)
@@ -91,17 +99,20 @@ def test_sum_number():
     test.add([1000], 500500)
     test.run()
 
+
 def test_print_triangle():
     test = Test("print_pyramid", print_triangle, True)
     test.add([1], "*\n")
     test.add([5], "*\n**\n***\n****\n*****\n")
     test.run()
 
+
 def test_print_square():
     test = Test("print_square", print_square, True)
     test.add([1], "*\n")
     test.add([5], "*****\n*****\n*****\n*****\n*****\n")
     test.run()
+
 
 def test_xor():
     test = Test("xor", xor)
@@ -111,6 +122,7 @@ def test_xor():
     test.add([False, False], False)
     test.run()
 
+
 def test_nand():
     test = Test("nand", nand)
     test.add([True, False], True)
@@ -118,6 +130,7 @@ def test_nand():
     test.add([True, True], False)
     test.add([False, False], True)
     test.run()
+
 
 def test_is_even():
     test = Test("is_even", is_even)
@@ -130,6 +143,7 @@ def test_is_even():
     test.add([1000], True)
     test.run()
 
+
 def test_print_pyramid():
     test = Test("print_pyramid", print_pyramid, True)
     s = "  *  \n *** \n*****\n"
@@ -138,6 +152,7 @@ def test_print_pyramid():
     s = "    *    \n   ***   \n  *****  \n ******* \n*********\n"
     test.add([5], s)
     test.run()
+
 
 def test_count_division():
     test = Test("count_division", count_division)
@@ -149,6 +164,7 @@ def test_count_division():
     test.add([12], 3)
     test.add([1000], 9)
     test.run()
+
 
 def test_amstrong():
     test = Test("amstrong", is_amstrong)
@@ -168,6 +184,7 @@ def test_amstrong():
     test.add([9474], True)
     test.add([54748], True)
     test.run()
+
 
 def run_test():
     print_separator()
@@ -191,3 +208,4 @@ def run_test():
     test_count_division()
     # Test hard
     test_amstrong()
+
