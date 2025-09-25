@@ -1,4 +1,4 @@
-from sujet_3.EmuDev.cpu import Cpu
+from sujet_3.Skeleton.cpu import Cpu
 from sujet_3.Moulinette.unit_test import AssertEqualAfterExecution
 from sujet_3.Moulinette.test_suite import TestSuite
 

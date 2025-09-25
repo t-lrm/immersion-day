@@ -1,4 +1,4 @@
-from sujet_3.EmuDev import bits
+from sujet_3.Skeleton import bits
 from sujet_3.Moulinette.unit_test import AssertOutput
 from sujet_3.Moulinette.moulinette import Moulinette, TestSuite
 
