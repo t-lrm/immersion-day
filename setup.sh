@@ -77,9 +77,15 @@ rm "$OUT_PATH/bundle.zip"
 
 # ===== OPEN TERMINAL =====
 
-nohup firefox "$OUT_PATH/sujet_1/sujet-1.html" "$OUT_PATH/sujet_2/sujet-2.html" "$OUT_PATH/sujet_3/sujet-3.html"
-ide
 
-# Open terminal
-nohup alacritty --hold -e sh -c "$INIT_CMD" &> /dev/null
+# Open the HTML files in Firefox
+nohup firefox "$OUT_PATH/sujet_1/sujet-1.html" \
+              "$OUT_PATH/sujet_2/sujet-2.html" \
+              "$OUT_PATH/sujet_3/sujet-3.html" \
+              >/dev/null 2>&1 &
 
+# Open the project in PyCharm
+nohup pycharm "$OUT_PATH" >/dev/null 2>&1 &
+
+# Open terminal and run INIT_CMD
+nohup alacritty --hold -e sh -c "$INIT_CMD" >/dev/null 2>&1 &
