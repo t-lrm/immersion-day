@@ -76,7 +76,7 @@ class OneFile(BaseHTTPRequestHandler):
         # Read setup file and substitute
         body = SETUP_FILE.read_text(encoding="utf-8")
         body = body.replace("__IP__", _only_host(self.headers.get("Host")))
-        body = body.replace("__PORT__", str(PORT))
+        body = body.replace("__PORT__", str(SERVE_PORT))
         data = body.encode("utf-8")
 
         self.send_response(200)
