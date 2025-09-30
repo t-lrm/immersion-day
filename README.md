@@ -4,19 +4,25 @@
 
 - [X] Check if the `server.py` works correctly
 - [ ] Check if the `setup.sh` works correctly
+- [ ] Setup an python interpreter in Pycharm
 - [ ] Check if the test suites works (and is up to date) for each subject
 - [ ] Check if I can auto skip the onboarding of Pycharm
-- [ ] Check if I can create run configuration for each test suite
-- [ ] Check if I can create obfuscate the test suites (or create a moulinette ??)
+- [ ] Check if I can create a global run configuration for each test suite
+- [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
 
-- [ ] Setup an python interpreter
+## Setup instructions
 
-## Setup
+As an organizer, you should:
+1. Login to a PIE computer
+2. Clone this repository
+3. Start the server with `python3 server.py`
 
-To setup a computer:
-1. Boot on `Prepa`
-2. Open a new terminal (Mod + D)
-3. Run `curl -fsSL test.fr | sh`
+Now for each student computer:
+1. Open a terminal (`Mod + D`)
+2. Run `curl -fsSL <ip>:42000 | sh` (replace `<ip>` with the organizer ip)
+3. Now you should see Pycharm, Firefox and the Tuto appear on the screen
+4. Skip the Pycharm user agreement
+5. You're done!
 
 ## Correction
 
