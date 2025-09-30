@@ -2,12 +2,14 @@
 
 ## TODO
 
-- [ ] Check if the `server.py` works correctly
+- [X] Check if the `server.py` works correctly
 - [ ] Check if the `setup.sh` works correctly
 - [ ] Check if the test suites works (and is up to date) for each subject
 - [ ] Check if I can auto skip the onboarding of Pycharm
 - [ ] Check if I can create run configuration for each test suite
 - [ ] Check if I can create obfuscate the test suites (or create a moulinette ??)
+
+- [ ] Setup an python interpreter
 
 ## Setup
 
