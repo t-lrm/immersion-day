@@ -5,8 +5,8 @@ stages:
 
 variables:
   # Customize exclusions (space-separated). Use folder/* to exclude a folder.
-  EXCLUDES: ".git/* .gitignore README.md docs/* .github/*"
-  ZIP_NAME: "sujets.zip"   # Constant name at repo root
+  EXCLUDES: ".git/* .gitignore .gitlab-ci.yml README.md server.py setup.sh"
+  ZIP_NAME: "sujets.zip"
 
 zip_to_repo_root:
   stage: package
@@ -14,25 +14,16 @@ zip_to_repo_root:
     - if: '$CI_COMMIT_BRANCH == "main"'
   before_script:
     - apk add --no-cache git zip
-    # Configure Git identity for the commit made by CI
     - git config user.email "ci-bot@epita.fr"
     - git config user.name  "CI Bot"
-    # Use a token that has push permissions
-    - >
-      git remote set-url origin
-      "https://oauth2:${PUSH_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git"
+    - git remote set-url origin "https://oauth2:${WRITE_TOKEN}@gitlab.cri.epita.fr/timothee.le-roux-maertens/ji.git"
   script:
-    # Build exclude args (also exclude the zip itself so it doesn't get re-packed)
     - |
       set -- $EXCLUDES "$ZIP_NAME"
       EXCLUDE_ARGS=
       for p in "$@"; do EXCLUDE_ARGS="$EXCLUDE_ARGS -x $p"; done
       EXCLUDE_ARGS="$EXCLUDE_ARGS -x .git/*"
-
-    # Create/replace the zip at the repo root (quiet, recursive)
     - sh -c "zip -r -q \"$ZIP_NAME\" . $EXCLUDE_ARGS"
-
-    # Commit only if the zip actually changed
     - git add -f "$ZIP_NAME"
     - |
       if git diff --cached --quiet; then
