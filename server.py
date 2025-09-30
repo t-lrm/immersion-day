@@ -1,24 +1,36 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from pathlib import Path
 from datetime import datetime, timezone
+import threading
 import zipfile
 import os
+import signal
+import sys
 
 # ----------------- Config -----------------
-HOST = "0.0.0.0"
-PORT = 42000
+SETUP_FILE = Path("setup.sh")
+HOST, PORT = "0.0.0.0", 42000
 SERVE_PORT = PORT + 1
 
-# Add the folders you want to include in the zip here (relative or absolute paths)
+# Folders to include in the zip (relative or absolute paths)
 FOLDERS_TO_ZIP = [
     "sujet_1",
     "sujet_2",
     "sujet_3",
     "tools",
 ]
-
-ZIP_FILE = Path("sujets.zip")
+ZIP_FILE = Path("bundle.zip")
 # ------------------------------------------
+
+
+def _only_host(header_host: str | None) -> str:
+    """
+    Extract only the host part (without port) from the Host header.
+    Falls back to 127.0.0.1 if missing.
+    """
+    if not header_host:
+        return "127.0.0.1"
+    return header_host.split(":", 1)[0]
 
 
 def create_zip(zip_path: Path, folders: list[str]) -> None:
@@ -27,7 +39,6 @@ def create_zip(zip_path: Path, folders: list[str]) -> None:
     The directory structure inside the zip is preserved relative to each folder's parent.
     Missing folders are skipped.
     """
-    # Make paths absolute for consistent arcname creation
     folders = [Path(p).resolve() for p in folders]
 
     if zip_path.exists():
@@ -39,30 +50,56 @@ def create_zip(zip_path: Path, folders: list[str]) -> None:
                 print(f"[zip] Skipping missing/non-dir: {folder}")
                 continue
 
-            # We’ll store paths relative to the folder’s parent so that
-            # the folder name itself appears at the top level in the zip.
             base = folder.parent
             for root, _, files in os.walk(folder):
                 root_path = Path(root)
                 for fname in files:
                     fpath = root_path / fname
-                    # Create an archive name like "<folder_name>/.../file"
                     arcname = fpath.relative_to(base)
                     zf.write(fpath, arcname)
-                    # Optional: print progress
-                    # print(f"[zip] Added {fpath} as {arcname}")
 
-    print(f"[zip] Created {zip_path} ({zip_path.stat().st_size} bytes)")
+    size = zip_path.stat().st_size if zip_path.exists() else 0
+    print(f"[zip] Created {zip_path} ({size} bytes)")
+
+
+class OneFile(BaseHTTPRequestHandler):
+    """Serves setup.sh on PORT with __IP__ and __PORT__ substitution."""
+    def do_GET(self):
+        if self.path not in ("/", "/setup.sh"):
+            self.send_error(404, "Not found")
+            return
+
+        if not SETUP_FILE.exists():
+            self.send_error(500, "Template missing")
+            return
+
+        # Read setup file and substitute
+        body = SETUP_FILE.read_text(encoding="utf-8")
+        body = body.replace("__IP__", _only_host(self.headers.get("Host")))
+        body = body.replace("__PORT__", str(PORT))
+        data = body.encode("utf-8")
+
+        self.send_response(200)
+        self.send_header("Content-Type", "text/x-sh; charset=utf-8")
+        self.send_header("Content-Length", str(len(data)))
+        self.send_header("Content-Disposition", 'attachment; filename="setup.sh"')
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(data)
+
+    def do_HEAD(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "text/x-sh; charset=utf-8")
+        self.end_headers()
 
 
 class ZipServer(BaseHTTPRequestHandler):
+    """Serves bundle.zip on PORT+1."""
     def _send_common_headers(self, length: int, last_modified: float):
         self.send_header("Content-Type", "application/zip")
         self.send_header("Content-Length", str(length))
         self.send_header("Content-Disposition", 'attachment; filename="bundle.zip"')
-        # Cache settings; tweak as needed
         self.send_header("Cache-Control", "no-store")
-        # Helpful last-modified header
         self.send_header(
             "Last-Modified",
             datetime.fromtimestamp(last_modified, tz=timezone.utc).strftime(
@@ -80,8 +117,9 @@ class ZipServer(BaseHTTPRequestHandler):
             return
 
         data = ZIP_FILE.read_bytes()
+        st = ZIP_FILE.stat()
         self.send_response(200)
-        self._send_common_headers(len(data), ZIP_FILE.stat().st_mtime)
+        self._send_common_headers(len(data), st.st_mtime)
         self.end_headers()
         self.wfile.write(data)
 
@@ -95,11 +133,33 @@ class ZipServer(BaseHTTPRequestHandler):
         self.end_headers()
 
 
+def serve(addr, handler):
+    HTTPServer(addr, handler).serve_forever()
+
+
 if __name__ == "__main__":
-    # Build the zip once on startup. You can call this again elsewhere if you want to refresh it.
+    # Build the zip once at startup. (Move this into ZipServer.do_GET if you prefer on-demand rebuilds.)
     create_zip(ZIP_FILE, FOLDERS_TO_ZIP)
 
-    # Serve only the zip on PORT+1
-    print(f"[serve] Hosting {ZIP_FILE} on http://{HOST}:{SERVE_PORT}/bundle.zip")
-    HTTPServer((HOST, SERVE_PORT), ZipServer).serve_forever()
+    # Start both servers
+    t1 = threading.Thread(target=serve, args=((HOST, PORT), OneFile), daemon=True)
+    t2 = threading.Thread(target=serve, args=((HOST, SERVE_PORT), ZipServer), daemon=True)
+    t1.start()
+    t2.start()
+
+    print(f"[serve] setup.sh:  http://{HOST}:{PORT}/setup.sh")
+    print(f"[serve] bundle.zip: http://{HOST}:{SERVE_PORT}/bundle.zip")
+
+    # Keep main thread alive; allow Ctrl+C to stop both
+    try:
+        signal.pause()  # Linux/Unix
+    except (AttributeError, KeyboardInterrupt):
+        try:
+            while True:
+                signal.sleep(3600)
+        except KeyboardInterrupt:
+            pass
+    finally:
+        print("\n[serve] Shutting down… (press Ctrl+C again if it doesn’t exit)")
+        sys.exit(0)
 
