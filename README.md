@@ -24,21 +24,27 @@ Now for each student computer:
 4. Skip the Pycharm user agreement
 5. You're done!
 
-## Correction
+## Contributions
 
-The correction of the exercices are here:
-- https://gitlab.cri.epita.fr/timothee.le-roux-maertens/chip-8
-- https://gitlab.cri.epita.fr/timothee.le-roux-maertens/mario-python
+If you want to contribute to one of the three subjects:
+**DO NOT MODIFY IT FROM HERE!!**
+
+Indeed, the folder `sujet_1`, `sujet_2` and `sujet_3` are imported with CI/CD.
+So instead, contribute directly on:
+- [`mario-python`](https://gitlab.cri.epita.fr/timothee.le-roux-maertens/mario-python) (`sujet_1` & `sujet_2`)
+- [`chip-8`](https://gitlab.cri.epita.fr/timothee.le-roux-maertens/chip-8) (`sujet_3`)
 
 If you're a member of the Team JI you should have an access to those repos.
 If it's not the case please [contact me](#contact).
 
+Note that you can also find the "ref" on those repos (this can be useful for chip-8).
+
 ## Architecture
 
-We create three private repositories:
-- `chip-8`
-- `mario-python`
+Here is a detailed explanation of how the CI/CD architecture works with the three repositories:
 - `journees-immersion`
+- `mario-python`
+- `chip-8`
 
 Two CI/CD pipelines are set up for chip-8 and mario-python, exporting the repos
 inside `journees-immersion` ensuring the correction files are excluded from the
