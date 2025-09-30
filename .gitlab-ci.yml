@@ -19,11 +19,10 @@ zip_to_repo_root:
     - git remote set-url origin "https://oauth2:${WRITE_TOKEN}@gitlab.cri.epita.fr/timothee.le-roux-maertens/ji.git"
   script:
     - |
-      set -- $EXCLUDES "$ZIP_NAME"
+      set -- $EXCLUDES "$ZIP_NAME" "*/.git/*" "*/.git"
       EXCLUDE_ARGS=
-      for p in "$@"; do EXCLUDE_ARGS="$EXCLUDE_ARGS -x $p"; done
-      EXCLUDE_ARGS="$EXCLUDE_ARGS -x .git/*"
-    - sh -c "zip -r -q \"$ZIP_NAME\" . $EXCLUDE_ARGS"
+      for p in "$@"; do EXCLUDE_ARGS="$EXCLUDE_ARGS -x \"$p\""; done
+    - eval "zip -r -q \"$ZIP_NAME\" . $EXCLUDE_ARGS"
     - git add -f "$ZIP_NAME"
     - |
       if git diff --cached --quiet; then
