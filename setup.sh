@@ -85,7 +85,7 @@ nohup firefox "$OUT_PATH/sujet_1/sujet-1.html" \
               >/dev/null 2>&1 &
 
 # Open the project in PyCharm
-nohup pycharm "$OUT_PATH" >/dev/null 2>&1 &
+nohup pycharm-community "$OUT_PATH" >/dev/null 2>&1 &
 
 # Open terminal and run INIT_CMD
 nohup alacritty --hold -e sh -c "$INIT_CMD" >/dev/null 2>&1 &
