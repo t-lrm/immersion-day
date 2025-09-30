@@ -71,7 +71,9 @@ fi
 
 # ===== DOWNLOAD SUBJECTS =====
 
-wget --miror --no-parent "$OUT_PATH" "$IP:$PORT"
+curl "http://$IP:$PORT" --output "$OUT_PATH/bundle.zip"
+unzip "$OUT_PATH/bundle.zip"
+rm "$OUT_ZIP/bundle.zip"
 
 # ===== OPEN TERMINAL =====
 
