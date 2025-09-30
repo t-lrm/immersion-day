@@ -34,7 +34,7 @@ INIT_CMD="i3-msg floating enable > /dev/null && echo -e \"$INIT_TEXT\" && kill \
 
 PYTHON3_PATH=$(whereis python3 | cut -d' ' -f2 | head -n1)
 ALIAS_ALED="alias aled=\"echo -e \\\"$CMD_LIST\\\"\""
-ALIAS_IDE="alias ide=\"(export PYCHARM_PYTHON_PATH=$PYTHON3_PATH && nohup pycharm-community ~/subject < /dev/null > /dev/null 2>&1 &) && exit\""
+ALIAS_IDE="alias ide=\"(export PYCHARM_PYTHON_PATH=$PYTHON3_PATH && nohup pycharm-community $OUT_PATH < /dev/null > /dev/null 2>&1 &) && exit\""
 
 # ===== WARNING =====
 
@@ -71,11 +71,14 @@ fi
 
 # ===== DOWNLOAD SUBJECTS =====
 
-curl "http://$IP:$PORT" --output "$OUT_PATH/bundle.zip"
-unzip "$OUT_PATH/bundle.zip"
-rm "$OUT_ZIP/bundle.zip"
+curl -s "http://$IP:$PORT" --output "$OUT_PATH/bundle.zip"
+unzip "$OUT_PATH/bundle.zip" -d "$OUT_PATH" > /dev/null
+rm "$OUT_PATH/bundle.zip"
 
 # ===== OPEN TERMINAL =====
+
+nohup firefox "$OUT_PATH/sujet_1/sujet-1.html" "$OUT_PATH/sujet_2/sujet-2.html" "$OUT_PATH/sujet_3/sujet-3.html"
+ide
 
 # Open terminal
 nohup alacritty --hold -e sh -c "$INIT_CMD" &> /dev/null
