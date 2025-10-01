@@ -6,6 +6,7 @@ import zipfile
 import os
 import signal
 import sys
+import socket
 
 # ----------------- Config -----------------
 SETUP_FILE = Path("setup.sh")
@@ -20,6 +21,13 @@ FOLDERS_TO_ZIP = [
     "tools",
 ]
 ZIP_FILE = Path("bundle.zip")
+
+def get_ipv4():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    output = s.getsockname()[0]
+    s.close()
+    return output
 # ------------------------------------------
 
 
@@ -47,7 +55,7 @@ def create_zip(zip_path: Path, folders: list[str]) -> None:
     with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
         for folder in folders:
             if not folder.exists() or not folder.is_dir():
-                print(f"[zip] Skipping missing/non-dir: {folder}")
+                print(f"[ZIP] Skipping missing/non-dir: {folder}")
                 continue
 
             base = folder.parent
@@ -59,7 +67,7 @@ def create_zip(zip_path: Path, folders: list[str]) -> None:
                     zf.write(fpath, arcname)
 
     size = zip_path.stat().st_size if zip_path.exists() else 0
-    print(f"[zip] Created {zip_path} ({size} bytes)")
+    print(f"[ZIP] Created {zip_path} ({size} bytes)")
 
 
 class OneFile(BaseHTTPRequestHandler):
@@ -138,7 +146,7 @@ def serve(addr, handler):
 
 
 if __name__ == "__main__":
-    # Build the zip once at startup. (Move this into ZipServer.do_GET if you prefer on-demand rebuilds.)
+    print("[ZIP] Zipping files (do not exit now)...")
     create_zip(ZIP_FILE, FOLDERS_TO_ZIP)
 
     # Start both servers
@@ -147,8 +155,9 @@ if __name__ == "__main__":
     t1.start()
     t2.start()
 
-    print(f"[serve] setup.sh:  http://{HOST}:{PORT}/setup.sh")
-    print(f"[serve] bundle.zip: http://{HOST}:{SERVE_PORT}/bundle.zip")
+    print(f"[SERVE] Host setup.sh:  http://{HOST}:{PORT}/setup.sh")
+    print(f"[SERVE] Host bundle.zip: http://{HOST}:{SERVE_PORT}/bundle.zip")
+    print(f"[INFO] You can now run 'curl -fsSL {get_ipv4()}:{PORT} | sh' on other machines.")
 
     # Keep main thread alive; allow Ctrl+C to stop both
     try:
@@ -160,6 +169,6 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             pass
     finally:
-        print("\n[serve] Shutting down… (press Ctrl+C again if it doesn’t exit)")
+        print("\n[SERVE] Shutting down… (press Ctrl+C again if it doesn’t exit)")
         sys.exit(0)
 
