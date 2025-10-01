@@ -75,6 +75,12 @@ curl -s "http://$IP:$PORT" --output "$OUT_PATH/bundle.zip"
 unzip "$OUT_PATH/bundle.zip" -d "$OUT_PATH" > /dev/null
 rm "$OUT_PATH/bundle.zip"
 
+# ===== CREATE VENV =====
+python3 -m venv "$OUT_PATH/.venv"
+source "$OUT_PATH/.venv/bin/activate"
+pip install pygame pyfiglet
+deactivate
+
 # ===== OPEN TERMINAL =====
 
 
