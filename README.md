@@ -3,7 +3,10 @@
 ## TODO
 
 - [X] Check if the `server.py` works correctly
-- [ ] Check if the `setup.sh` works correctly
+- [X] Check if the `setup.sh` works correctly
+- [ ] Check if I can hide some files/folders in the Pychar explorer
+- [ ] Fix EmuDev moulinette so that it hides tests on function not modified
+- [ ] Add the run configurations per subject to .idea
 - [ ] Setup an python interpreter in Pycharm
 - [ ] Check if the test suites works (and is up to date) for each subject
 - [ ] Check if I can auto skip the onboarding of Pycharm
