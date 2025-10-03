@@ -1,6 +1,6 @@
 import time
 
-from sujet_3.EmuDev.bits import Bits
+from sujet_3.Skeleton.bits import Bits
 from sujet_3.Skeleton.cpu import Cpu
 
 class Chip8(Cpu):
