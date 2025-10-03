@@ -19,6 +19,7 @@ FOLDERS_TO_ZIP = [
     "sujet_2",
     "sujet_3",
     "tools",
+    ".idea"
 ]
 ZIP_FILE = Path("bundle.zip")
 
