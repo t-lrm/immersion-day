@@ -78,7 +78,7 @@ rm "$OUT_PATH/bundle.zip"
 # ===== CREATE VENV =====
 python3 -m venv "$OUT_PATH/.venv"
 source "$OUT_PATH/.venv/bin/activate"
-pip install pygame pyfiglet
+pip install pygame pyfiglet keyboard
 deactivate
 
 # ===== OPEN TERMINAL =====
