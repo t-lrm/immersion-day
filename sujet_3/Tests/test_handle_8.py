@@ -55,11 +55,11 @@ test_handle_8.add(AssertEqual(lambda: reg(0xF), 0x01))
 # 0x8XY5
 test_handle_8.add(Execute(init_registers))
 test_handle_8.add(AssertEqualAfterExecution([0x8125], lambda: reg(0x1), 0x13))
+test_handle_8.add(AssertEqual(lambda: reg(0xF), 0x00)) # 18th test
+test_handle_8.add(AssertEqualAfterExecution([0x8155], lambda: reg(0xF), 0x01))
 test_handle_8.add(AssertEqual(lambda: reg(0xF), 0x01))
-test_handle_8.add(AssertEqualAfterExecution([0x8155], lambda: reg(0xF), 0x00))
-test_handle_8.add(AssertEqual(lambda: reg(0xF), 0x00))
 test_handle_8.add(AssertEqualAfterExecution([0x8C55], lambda: reg(0xC), 0x10))
-test_handle_8.add(AssertEqual(lambda: reg(0xF), 0x00))
+test_handle_8.add(AssertEqual(lambda: reg(0xF), 0x01))
 
 # 0x8XY6
 test_handle_8.add(Execute(init_registers))
