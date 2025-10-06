@@ -28,9 +28,6 @@ class TestSuite:
         """
         Run all the tests in the test suite.
         """
-        if self._is_function_empty():
-            return
-
         Printer.print_header(self.function.__name__)
         Printer.i = 0
 
@@ -126,49 +123,4 @@ class TestSuite:
             test.function()
         else:
             test.function(*test.args)
-
-
-    def _is_function_empty(self) -> bool:
-        """
-        True if the function body is exactly one statement that is either a bare
-        Ellipsis (`...`) or `pass`, ignoring an optional docstring.
-        The purpose of this function is to print the testsuite only if the
-        function is completed.
-        """
-        try:
-            src = inspect.getsource(self.function)
-        except OSError:
-            return False  # no reliable signal without source
-
-        mod = ast.parse(textwrap.dedent(src))
-        func = next(
-            n for n in ast.walk(mod)
-            if isinstance(n, (ast.FunctionDef, ast.AsyncFunctionDef))
-        )
-
-        body = list(func.body)
-
-        # strip leading docstring if present
-        if (body and isinstance(body[0], ast.Expr)
-            and isinstance(getattr(body[0], "value", None), ast.Constant)
-            and isinstance(body[0].value.value, str)):
-            body = body[1:]
-
-        if len(body) != 1:
-            return False
-
-        node = body[0]
-
-        # allow `pass`
-        if isinstance(node, ast.Pass):
-            return True
-
-        # allow a bare `...`
-        if isinstance(node, ast.Expr):
-            v = node.value
-            # Py3.8+: Ellipsis is ast.Constant(Ellipsis); earlier had ast.Ellipsis
-            if (isinstance(v, ast.Constant) and v.value is Ellipsis) or isinstance(v, ast.Ellipsis):
-                return True
-
-        return False
 
