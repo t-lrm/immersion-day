@@ -6,9 +6,9 @@
 - [X] Check if the `setup.sh` works correctly
 - [ ] Check if I can hide some files/folders in the Pychar explorer
 - [ ] Add the run configurations per subject to .idea
-- [ ] Setup an python interpreter in Pycharm
+- [X] Setup an python interpreter in Pycharm
 - [ ] Check if I can auto skip the onboarding of Pycharm
-- [ ] Check if I can create a global run configuration for each test suite
+- [X] Check if I can create a global run configuration for each test suite
 - [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
 
 ## Setup instructions
