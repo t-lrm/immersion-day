@@ -83,6 +83,7 @@ mkdir -p "$HOME/.java"
 
 cp "$OUT_PATH/pycharm-consent/accepted" "$HOME/.local/share/JetBrains/consentOptions/"
 cp "$OUT_PATH/pycharm-consent/trusted-paths.xml" "$HOME/.config/JetBrains/PyCharmCE2024.3/options/"
+cp "$OUT_PATH/pycharm-consent/jdk.table.xml" "$HOME/.config/JetBrains/PyCharmCE2024.3/options/"
 cp -r "$OUT_PATH/pycharm-consent/.userPrefs" "$HOME/.java/"
 
 rm -rf -- "$OUT_PATH/pycharm-consent"
