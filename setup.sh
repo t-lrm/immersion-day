@@ -77,8 +77,12 @@ rm "$OUT_PATH/bundle.zip"
 
 # ===== COPY PYCHARM CONSENT VARIABLES =====
 
+mkdir -p "~/.local/share/JetBrains/consentOptions/"
+mkdir "~/.java/"
+
 cp "$OUT_PATH/pycharm-consent/accepted" "~/.local/share/JetBrains/consentOptions/"
 cp -r "$OUT_PATH/pycharm-consent/.userPrefs/" "~/.java/"
+
 rm -r "$OUT_PATH/pycharm-consent/"
 
 # ===== CREATE VENV =====
