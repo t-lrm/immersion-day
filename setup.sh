@@ -34,7 +34,7 @@ INIT_CMD="i3-msg floating enable > /dev/null && echo -e \"$INIT_TEXT\" && kill \
 
 PYTHON3_PATH=$(whereis python3 | cut -d' ' -f2 | head -n1)
 ALIAS_ALED="alias aled=\"echo -e \\\"$CMD_LIST\\\"\""
-ALIAS_IDE="alias ide=\"(export PYCHARM_PYTHON_PATH=$PYTHON3_PATH && nohup pycharm-community $OUT_PATH < /dev/null > /dev/null 2>&1 &) && exit\""
+ALIAS_IDE="alias ide=\"(nohup pycharm-community $OUT_PATH < /dev/null > /dev/null 2>&1 &) && exit\""
 
 # ===== WARNING =====
 
