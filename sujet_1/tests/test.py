@@ -1,4 +1,3 @@
-from test_suite import run_test
-from main import *
+from sujet_1.tests.test_suite import run_test
 
 run_test()

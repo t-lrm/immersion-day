@@ -1,6 +1,6 @@
-from main import *
 from math import pi
-from moulinette import *
+from sujet_1.skeleton.main import *
+from sujet_1.tests.moulinette import *
 
 
 def test_print_mario():
