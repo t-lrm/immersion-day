@@ -158,7 +158,7 @@ if __name__ == "__main__":
 
     print(f"[SERVE] Host setup.sh:  http://{HOST}:{PORT}/setup.sh")
     print(f"[SERVE] Host bundle.zip: http://{HOST}:{SERVE_PORT}/bundle.zip")
-    print(f"[INFO] You can now run 'curl -fsSL {get_ipv4()}:{PORT} | sh' on other machines.")
+    print(f"[INFO] You can now run 'curl {get_ipv4()}:{PORT} | sh' on other machines.")
 
     # Keep main thread alive; allow Ctrl+C to stop both
     try:

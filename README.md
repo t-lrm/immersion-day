@@ -20,7 +20,7 @@ As an organizer, you should:
 
 Now for each student computer:
 1. Open a terminal (`Mod + D`)
-2. Run `curl -fsSL <ip>:42000 | sh` (replace `<ip>` with the organizer ip)
+2. Run `curl <ip>:42000 | sh` (replace `<ip>` with the organizer ip)
 3. Now you should see Pycharm, Firefox and the Tuto appear on the screen
 4. Skip the Pycharm user agreement
 5. You're done!
