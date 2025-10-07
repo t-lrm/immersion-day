@@ -4,8 +4,8 @@
 
 - [X] Check if the `server.py` works correctly
 - [X] Check if the `setup.sh` works correctly
-- [ ] Check if I can hide some files/folders in the Pychar explorer
-- [ ] Add the run configurations per subject to .idea
+- [X] Check if I can hide some files/folders in the Pychar explorer
+- [X] Add the run configurations per subject to .idea
 - [X] Setup an python interpreter in Pycharm
 - [ ] Check if I can auto skip the onboarding of Pycharm
 - [X] Check if I can create a global run configuration for each test suite
