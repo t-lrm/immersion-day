@@ -10,6 +10,8 @@
 - [ ] Check if I can auto skip the onboarding of Pycharm
 - [X] Check if I can create a global run configuration for each test suite
 - [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
+- [ ] Update the folder architecture of the subjects 1 and 2
+- [ ] Update the intro of subject 1 to explain how to run a test suite
 
 ## Setup instructions
 
