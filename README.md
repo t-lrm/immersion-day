@@ -7,10 +7,10 @@
 - [X] Check if I can hide some files/folders in the Pychar explorer
 - [X] Add the run configurations per subject to .idea
 - [X] Setup an python interpreter in Pycharm
-- [ ] Check if I can auto skip the onboarding of Pycharm
+- [X] Check if I can auto skip the onboarding of Pycharm
 - [X] Check if I can create a global run configuration for each test suite
 - [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
-- [ ] Update the folder architecture of the subjects 1 and 2
+- [X] Update the folder architecture of the subjects 1 and 2
 - [ ] Update the intro of subject 1 to explain how to run a test suite
 
 ## Setup instructions

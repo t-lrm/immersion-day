@@ -75,14 +75,20 @@ curl -s "http://$IP:$PORT" --output "$OUT_PATH/bundle.zip"
 unzip "$OUT_PATH/bundle.zip" -d "$OUT_PATH" > /dev/null
 rm "$OUT_PATH/bundle.zip"
 
+# ===== COPY PYCHARM CONSENT VARIABLES =====
+
+cp "$OUT_PATH/pycharm-consent/accepted" "~/.local/share/JetBrains/consentOptions/"
+cp -r "$OUT_PATH/pycharm-consent/.userPrefs/" "~/.java/"
+rm -r "$OUT_PATH/pycharm-consent/"
+
 # ===== CREATE VENV =====
+
 python3 -m venv "$OUT_PATH/.venv"
 source "$OUT_PATH/.venv/bin/activate"
 pip install pygame pyfiglet keyboard
 deactivate
 
 # ===== OPEN TERMINAL =====
-
 
 # Open the HTML files in Firefox
 nohup firefox "$OUT_PATH/sujet_1/sujet-1.html" \
@@ -95,3 +101,4 @@ nohup pycharm-community "$OUT_PATH" >/dev/null 2>&1 &
 
 # Open terminal and run INIT_CMD
 nohup alacritty --hold -e sh -c "$INIT_CMD" >/dev/null 2>&1 &
+
