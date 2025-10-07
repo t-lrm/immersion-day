@@ -6,6 +6,8 @@
       <excludeFolder url="file://$MODULE_DIR$/tools" />
       <excludeFolder url="file://$MODULE_DIR$/sujet_3/Moulinette" />
       <excludeFolder url="file://$MODULE_DIR$/sujet_3/Tests" />
+      <excludeFolder url="file://$MODULE_DIR$/sujet_1/tests" />
+      <excludeFolder url="file://$MODULE_DIR$/sujet_2/tests" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12 (subjects)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
