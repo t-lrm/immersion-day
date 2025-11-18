@@ -18,6 +18,7 @@ FOLDERS_TO_ZIP = [
     "sujet_1",
     "sujet_2",
     "sujet_3",
+    "Moulinette",
     "tools",
     "pycharm-consent",
     ".idea",
