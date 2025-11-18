@@ -12,10 +12,10 @@ test_caesar_encode.add(AssertOutput(["mario aime beaucoup les champignons", 9817
 test_caesar_encode.add(AssertOutput(["", 0], ""))
 
 test_caesar_decode = TestSuite(warmup.caesar_decode)
-test_caesar_decode.add(AssertOutput(["bac", 2], "dce"))
-test_caesar_decode.add(AssertOutput(["bowser fait du zele!", 7], "ivdzly mhpa kb glsl!"))
-test_caesar_decode.add(AssertOutput(["koopa", -3], "hllmx"))
-test_caesar_decode.add(AssertOutput(["mario aime beaucoup les champignons", 9817], "bpgxd pxbt qtpjrdje ath rwpbexvcdch"))
+test_caesar_decode.add(AssertOutput(["dce", 2], "bac"))
+test_caesar_decode.add(AssertOutput(["ivdzly mhpa kb glsl!", 7], "bowser fait du zele!"))
+test_caesar_decode.add(AssertOutput(["hllmx", -3], "koopa"))
+test_caesar_decode.add(AssertOutput(["bpgxd pxbt qtpjrdje ath rwpbexvcdch", 9817], "mario aime beaucoup les champignons"))
 test_caesar_decode.add(AssertOutput(["", 0], ""))
 
 test_substitution_encode = TestSuite(warmup.substitution_encode)
@@ -34,8 +34,8 @@ test_vigenere_encode.add(AssertOutput(["bowser aime bien ces petits exercices", 
 test_vigenere_encode.add(AssertOutput(["", "vigenere"], ""))
 
 test_vigenere_decode = TestSuite(warmup.vigenere_decode)
-test_vigenere_decode.add(AssertOutput(["bonjour les amis", "vigenere"], "wwtnbyi gmy nqzw"))
-test_vigenere_decode.add(AssertOutput(["bowser aime bien ces petits exercices", "toad"], "ucwvxf dbae uweq qev dewbhs xleuvwchl"))
+test_vigenere_decode.add(AssertOutput(["wwtnbyi gmy nqzw", "vigenere"], "bonjour les amis"))
+test_vigenere_decode.add(AssertOutput(["ucwvxf dbae uweq qev dewbhs xleuvwchl", "toad"], "bowser aime bien ces petits exercices"))
 test_vigenere_decode.add(AssertOutput(["", "vigenere"], ""))
 
 test_xor_encode = TestSuite(warmup.xor_encode)
