@@ -1,7 +1,8 @@
-from sujet_2.tests.moulinette import *
-from sujet_2.skeleton import warmup
-from sujet_2.skeleton import serious_encodings
-from sujet_2.skeleton import hard
+from moulinette import *
+import warmup
+import serious_encodings
+import hard
+
 
 # Helper function
 def caesar_test(messages):

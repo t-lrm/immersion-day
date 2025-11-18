@@ -1,211 +1,145 @@
-from math import pi
 from sujet_1.skeleton.main import *
-from sujet_1.tests.moulinette import *
+from math import pi
+from Moulinette.moulinette import Moulinette
+from Moulinette.test_suite import TestSuite
+from Moulinette.unit_test import AssertOutput, AssertConsoleOutput
 
+test_print_mario = TestSuite(print_mario)
+test_print_mario.add(AssertConsoleOutput([], "Hello, Mario!\n"))
 
-def test_print_mario():
-    test = Test("print_mario", print_mario, True)
-    test.add([], "Hello, Mario!\n")
-    test.run()
+test_get_mario_age = TestSuite(get_mario_age)
+test_get_mario_age.add(AssertOutput([1], 26))
+test_get_mario_age.add(AssertOutput([2], 27))
+test_get_mario_age.add(AssertOutput([10], 35))
+test_get_mario_age.add(AssertOutput([100], 125))
+test_get_mario_age.add(AssertOutput([0], 25))
+test_get_mario_age.add(AssertOutput([-10], 15))
 
+test_diff = TestSuite(diff)
+test_diff.add(AssertOutput([1, 2], -1))
+test_diff.add(AssertOutput([1, 2], -1))
+test_diff.add(AssertOutput([0, 0], 0))
+test_diff.add(AssertOutput([0, 1], -1))
+test_diff.add(AssertOutput([1, 0], 1))
+test_diff.add(AssertOutput([1, 1], 0))
+test_diff.add(AssertOutput([100, 19], 81))
+test_diff.add(AssertOutput([27, 12], 15))
+test_diff.add(AssertOutput([12, -12], 24))
 
-def test_getMarioAge():
-    test = Test("getMarioAge", get_mario_age)
-    test.add([1], 26)
-    test.add([2], 27)
-    test.add([10], 35)
-    test.add([100], 125)
-    test.add([0], 25)
-    test.add([-10], 15)
-    test.run()
+test_perimeter = TestSuite(perimeter)
+test_perimeter.add(AssertOutput([1], 2 * pi))
+test_perimeter.add(AssertOutput([0], 0))
+test_perimeter.add(AssertOutput([10], 20 * pi))
+test_perimeter.add(AssertOutput([100], 200 * pi))
+test_perimeter.add(AssertOutput([-2], -4 * pi))
 
+test_max = TestSuite(max)
+test_max.add(AssertOutput([1, 2], 2))
+test_max.add(AssertOutput([0, 0], 0))
+test_max.add(AssertOutput([0, 1], 1))
+test_max.add(AssertOutput([1, 0], 1))
+test_max.add(AssertOutput([1, 1], 1))
+test_max.add(AssertOutput([100, 19], 100))
+test_max.add(AssertOutput([27, 12], 27))
+test_max.add(AssertOutput([12, -12], 12))
+test_max.add(AssertOutput([-61, -12], -12))
 
-def test_diff():
-    test = Test("diff", diff)
-    test.add([1, 2], -1)
-    test.add([0, 0], 0)
-    test.add([0, 1], -1)
-    test.add([1, 0], 1)
-    test.add([1, 1], 0)
-    test.add([100, 19], 81)
-    test.add([27, 12], 15)
-    test.add([12, -12], 24)
-    test.run()
+test_give_grade = TestSuite(give_grade)
+test_give_grade.add(AssertConsoleOutput([0], "F\n"))
+test_give_grade.add(AssertConsoleOutput([1], "F\n"))
+test_give_grade.add(AssertConsoleOutput([11], "E\n"))
+test_give_grade.add(AssertConsoleOutput([12], "D\n"))
+test_give_grade.add(AssertConsoleOutput([15], "C\n"))
+test_give_grade.add(AssertConsoleOutput([16], "B\n"))
+test_give_grade.add(AssertConsoleOutput([19], "A\n"))
+test_give_grade.add(AssertConsoleOutput([20], "A\n"))
+test_give_grade.add(AssertConsoleOutput([-5], "Note invalide\n"))
+test_give_grade.add(AssertConsoleOutput([22], "Note invalide\n"))
 
+test_and_gate = TestSuite(and_gate)
+test_and_gate.add(AssertOutput([True, False], False))
+test_and_gate.add(AssertOutput([False, True], False))
+test_and_gate.add(AssertOutput([True, True], True))
+test_and_gate.add(AssertOutput([False, False], False))
 
-def test_perimeter():
-    test = Test("perimeter", perimeter)
-    test.add([1], 2 * pi)
-    test.add([0], 0)
-    test.add([10], 20 * pi)
-    test.add([100], 200 * pi)
-    test.add([-2], -4 * pi)
-    test.run()
+test_or_gate = TestSuite(or_gate)
+test_or_gate.add(AssertOutput([True, False], True))
+test_or_gate.add(AssertOutput([False, True], True))
+test_or_gate.add(AssertOutput([True, True], True))
+test_or_gate.add(AssertOutput([False, False], False))
 
+test_sum_number = TestSuite(sum_number)
+test_sum_number.add(AssertOutput([1], 1))
+test_sum_number.add(AssertOutput([0], 0))
+test_sum_number.add(AssertOutput([10], 55))
+test_sum_number.add(AssertOutput([100], 5050))
+test_sum_number.add(AssertOutput([7], 28))
+test_sum_number.add(AssertOutput([12], 78))
+test_sum_number.add(AssertOutput([1000], 500500))
 
-def test_and_gate():
-    test = Test("and_gate", and_gate)
-    test.add([True, False], False)
-    test.add([False, True], False)
-    test.add([True, True], True)
-    test.add([False, False], False)
-    test.run()
+test_print_square = TestSuite(print_square)
+test_print_square.add(AssertConsoleOutput([1], "*\n"))
+test_print_square.add(AssertConsoleOutput([5], "*****\n*****\n*****\n*****\n*****\n"))
 
+test_print_triangle = TestSuite(print_triangle)
+test_print_triangle.add(AssertConsoleOutput([1], "*\n"))
+test_print_triangle.add(AssertConsoleOutput([5], "*\n**\n***\n****\n*****\n"))
 
-def test_or_gate():
-    test = Test("or_gate", or_gate)
-    test.add([True, False], True)
-    test.add([False, True], True)
-    test.add([True, True], True)
-    test.add([False, False], False)
-    test.run()
+test_ask_div = TestSuite(ask_div) # TODO
 
+test_xor = TestSuite(xor)
+test_xor.add(AssertOutput([True, False], True))
+test_xor.add(AssertOutput([False, True], True))
+test_xor.add(AssertOutput([True, True], False))
+test_xor.add(AssertOutput([False, False], False))
 
-def test_max():
-    test = Test("max", max)
-    test.add([1, 2], 2)
-    test.add([0, 0], 0)
-    test.add([0, 1], 1)
-    test.add([1, 0], 1)
-    test.add([1, 1], 1)
-    test.add([100, 19], 100)
-    test.add([27, 12], 27)
-    test.add([12, -12], 12)
-    test.run()
+test_nand = TestSuite(nand)
+test_nand.add(AssertOutput([True, False], True))
+test_nand.add(AssertOutput([False, True], True))
+test_nand.add(AssertOutput([True, True], False))
+test_nand.add(AssertOutput([False, False], True))
 
-def test_give_grade():
-    test = Test("give_grade", give_grade, True)
-    test.add([1], "F\n")
-    test.add([0], "F\n")
-    test.add([-5], "Note invalide\n")
-    test.add([11], "E\n")
-    test.add([12], "D\n")
-    test.add([15], "C\n")
-    test.add([16], "B\n")
-    test.add([19], "A\n")
-    test.add([20], "A\n")
-    test.add([22], "Note invalide\n")
-    test.run()
+test_is_even = TestSuite(is_even)
+test_is_even.add(AssertOutput([1], False))
+test_is_even.add(AssertOutput([0], True))
+test_is_even.add(AssertOutput([10], True))
+test_is_even.add(AssertOutput([100], True))
+test_is_even.add(AssertOutput([7], False))
+test_is_even.add(AssertOutput([12], True))
+test_is_even.add(AssertOutput([1000], True))
+test_is_even.add(AssertOutput([-1], False))
+test_is_even.add(AssertOutput([-7], False))
+test_is_even.add(AssertOutput([-12], True))
+test_is_even.add(AssertOutput([-1000], True))
 
+test_print_pyramid = TestSuite(print_pyramid)
+test_print_pyramid.add(AssertConsoleOutput([3], "  *  \n *** \n*****\n"))
+test_print_pyramid.add(AssertConsoleOutput([5], "    *    \n   ***   \n  *****  \n ******* \n*********\n"))
 
-def test_sum_number():
-    test = Test("sum_number", sum_number)
-    test.add([1], 1)
-    test.add([0], 0)
-    test.add([10], 55)
-    test.add([100], 5050)
-    test.add([7], 28)
-    test.add([12], 78)
-    test.add([1000], 500500)
-    test.run()
+test_count_division = TestSuite(count_division)
+test_count_division.add(AssertOutput([1], 0))
+test_count_division.add(AssertOutput([0], 0))
+test_count_division.add(AssertOutput([10], 3))
+test_count_division.add(AssertOutput([100], 6))
+test_count_division.add(AssertOutput([7], 2))
+test_count_division.add(AssertOutput([12], 3))
+test_count_division.add(AssertOutput([1000], 9))
 
+test_is_amstrong = TestSuite(is_amstrong)
+test_is_amstrong.add(AssertOutput([1], True))
+test_is_amstrong.add(AssertOutput([0], True))
+test_is_amstrong.add(AssertOutput([10], False))
+test_is_amstrong.add(AssertOutput([100], False))
+test_is_amstrong.add(AssertOutput([7], True))
+test_is_amstrong.add(AssertOutput([12], False))
+test_is_amstrong.add(AssertOutput([1000], False))
+test_is_amstrong.add(AssertOutput([153], True))
+test_is_amstrong.add(AssertOutput([370], True)) # 370 = 3^3 + 7^3 + 0^3
+test_is_amstrong.add(AssertOutput([371], True)) # 371 = 3^3 + 7^3 + 1^3
+test_is_amstrong.add(AssertOutput([407], True)) # 407 = 4^3 + 0^3 + 7^3
+test_is_amstrong.add(AssertOutput([1634], True)) # 1634 = 1^4 + 6^4 + 3^4 + 4^4
+test_is_amstrong.add(AssertOutput([8208], True))
+test_is_amstrong.add(AssertOutput([9474], True))
+test_is_amstrong.add(AssertOutput([54748], True))
 
-def test_print_triangle():
-    test = Test("print_pyramid", print_triangle, True)
-    test.add([1], "*\n")
-    test.add([5], "*\n**\n***\n****\n*****\n")
-    test.run()
-
-
-def test_print_square():
-    test = Test("print_square", print_square, True)
-    test.add([1], "*\n")
-    test.add([5], "*****\n*****\n*****\n*****\n*****\n")
-    test.run()
-
-
-def test_xor():
-    test = Test("xor", xor)
-    test.add([True, False], True)
-    test.add([False, True], True)
-    test.add([True, True], False)
-    test.add([False, False], False)
-    test.run()
-
-
-def test_nand():
-    test = Test("nand", nand)
-    test.add([True, False], True)
-    test.add([False, True], True)
-    test.add([True, True], False)
-    test.add([False, False], True)
-    test.run()
-
-
-def test_is_even():
-    test = Test("is_even", is_even)
-    test.add([1], False)
-    test.add([0], True)
-    test.add([10], True)
-    test.add([100], True)
-    test.add([7], False)
-    test.add([12], True)
-    test.add([1000], True)
-    test.run()
-
-
-def test_print_pyramid():
-    test = Test("print_pyramid", print_pyramid, True)
-    s = "  *  \n *** \n*****\n"
-    test.add([3], s)
-    # Test with n = 5
-    s = "    *    \n   ***   \n  *****  \n ******* \n*********\n"
-    test.add([5], s)
-    test.run()
-
-
-def test_count_division():
-    test = Test("count_division", count_division)
-    test.add([1], 0)
-    test.add([0], 0)
-    test.add([10], 3)
-    test.add([100], 6)
-    test.add([7], 2)
-    test.add([12], 3)
-    test.add([1000], 9)
-    test.run()
-
-
-def test_amstrong():
-    test = Test("amstrong", is_amstrong)
-    test.add([1], True)
-    test.add([0], True)
-    test.add([10], False)
-    test.add([100], False)
-    test.add([7], True)
-    test.add([12], False)
-    test.add([1000], False)
-    test.add([153], True)
-    test.add([370], True) # 370 = 3^3 + 7^3 + 0^3
-    test.add([371], True) # 371 = 3^3 + 7^3 + 1^3
-    test.add([407], True) # 407 = 4^3 + 0^3 + 7^3
-    test.add([1634], True) # 1634 = 1^4 + 6^4 + 3^4 + 4^4
-    test.add([8208], True)
-    test.add([9474], True)
-    test.add([54748], True)
-    test.run()
-
-
-def run_test():
-    print_separator()
-    # Test easy
-    test_print_mario()
-    test_getMarioAge()
-    test_diff()
-    test_perimeter()
-    test_max()
-    test_give_grade()
-    test_and_gate()
-    test_or_gate()
-    test_sum_number()
-    test_print_square()
-    test_print_triangle()
-    #  Test medium
-    test_xor()
-    test_nand()
-    test_is_even()
-    test_print_triangle()
-    test_count_division()
-    # Test hard
-    test_amstrong()
-
+test_guess_number = TestSuite(guess_number) # TODO

@@ -1,5 +1,5 @@
-from sujet_2.skeleton.doors import Door
-from sujet_2.skeleton.warmup import *
+from doors import Door
+from warmup import *
 
 
 def caesar_doors(messages):
