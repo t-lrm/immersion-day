@@ -2,16 +2,16 @@
 
 ## TODO
 
-- [X] Check if the `server.py` works correctly
-- [X] Check if the `setup.sh` works correctly
-- [X] Check if I can hide some files/folders in the Pychar explorer
-- [X] Add the run configurations per subject to .idea
-- [X] Setup an python interpreter in Pycharm
-- [X] Check if I can auto skip the onboarding of Pycharm
-- [X] Check if I can create a global run configuration for each test suite
-- [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
-- [X] Update the folder architecture of the subjects 1 and 2
+### Bugs to fix
+
+- [ ] Pycharm doesn't hide the excluded folders
+- [ ] Firefox opens a tab 'Firefox Privacy Notice'
+
+### Improvements to do
+
 - [ ] Update the intro of subject 1 to explain how to run a test suite
+- [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
+- [ ] Setup an SSH connection on each computer
 
 ## Setup instructions
 
