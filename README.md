@@ -41,12 +41,12 @@ Two CI/CD pipelines are set up for chip-8 and mario-python, exporting the repos
 inside `journees-immersion` ensuring the correction files are excluded from the
 exports.
 
-A read-only access token is generated for the `journees-immersion` repository.
-Using this token, we write a setup script (`setup.sh`) that clones the
-repository, and host the script at `ji.baunky.fr`.
+Then, when you clone this repo and run the server, two ports are opened:
+- `42000: setup.sh`
+- `42001: bundle.zip`
 
-Finally, we configure a whitelist so that only EPITA PIE computers can access
-`ji.baunky.fr`. Every IP was added manually to only allow Strasbourg computers.
+When the client will download and execute the setup script, this setup will take
+care of downloading, extracting and setting up the folder architecture.
 
 ## TODO
 
