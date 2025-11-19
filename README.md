@@ -52,12 +52,13 @@ care of downloading, extracting and setting up the folder architecture.
 
 ### Bugs to fix
 
+- [ ] Update the intro of subject 1 to explain how to run a test suite
+- [ ] Update subject 1: avoid using prints in function `give_grade` as it's confusing for the students
 - [ ] Pycharm doesn't hide the excluded folders
 - [ ] Firefox opens a tab 'Firefox Privacy Notice'
 
 ### Improvements to do
 
-- [ ] Update the intro of subject 1 to explain how to run a test suite
 - [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
 - [ ] Setup an SSH connection on each computer
 
