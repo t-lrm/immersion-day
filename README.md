@@ -1,18 +1,5 @@
 # Journées d’immersion
 
-## TODO
-
-### Bugs to fix
-
-- [ ] Pycharm doesn't hide the excluded folders
-- [ ] Firefox opens a tab 'Firefox Privacy Notice'
-
-### Improvements to do
-
-- [ ] Update the intro of subject 1 to explain how to run a test suite
-- [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
-- [ ] Setup an SSH connection on each computer
-
 ## Setup instructions
 
 As an organizer, you should:
@@ -61,22 +48,18 @@ repository, and host the script at `ji.baunky.fr`.
 Finally, we configure a whitelist so that only EPITA PIE computers can access
 `ji.baunky.fr`. Every IP was added manually to only allow Strasbourg computers.
 
-## Setup Gitlab Personnal Access Token (PAT)
+## TODO
 
-Here are the steps to allow a CI/CD to push some commits to repos:
-1. Go to `https://gitlab.cri.epita.fr/-/user_settings/personal_access_tokens`
-2. Generate a token with the property `write_repository`
-3. Go to the section `Settings > CI/CD > Variables` of your repo containing the CI/CD
-4. Add a variable with the name you want
-5. Now you can use it in your CI/CD
+### Bugs to fix
 
-## Setup Gitlab clone token
+- [ ] Pycharm doesn't hide the excluded folders
+- [ ] Firefox opens a tab 'Firefox Privacy Notice'
 
-To create a repository-base token, follow those instructions:
-1. Open your GitLab project.
-2. Go to Settings → Repository → Deploy tokens.
-3. Add a name, expiry date, and select `read_repository`.
-4. Now you can use it with `git clone https://<USERNAME>:<TOKEN>@gitlab.cri.epita.fr/<NAMESPACE>/<REPO>.git`
+### Improvements to do
+
+- [ ] Update the intro of subject 1 to explain how to run a test suite
+- [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
+- [ ] Setup an SSH connection on each computer
 
 ## Contact
 
