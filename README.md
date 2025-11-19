@@ -54,6 +54,9 @@ care of downloading, extracting and setting up the folder architecture.
 
 - [ ] Update the intro of subject 1 to explain how to run a test suite
 - [ ] Update subject 1: avoid using prints in function `give_grade` as it's confusing for the students
+- [ ] Error on the test `prints_quare` when the function is not correct (I think
+it's a problem with the moulinette that doesn't know how to display the expected
+output when a function doesn't return anything)
 - [ ] Pycharm doesn't hide the excluded folders
 - [ ] Firefox opens a tab 'Firefox Privacy Notice'
 
