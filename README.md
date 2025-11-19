@@ -57,6 +57,7 @@ care of downloading, extracting and setting up the folder architecture.
 - [ ] Error on the test `prints_quare` when the function is not correct (I think
 it's a problem with the moulinette that doesn't know how to display the expected
 output when a function doesn't return anything)
+- [ ] It could be great to add a file where students can see the result of their function. Now, they only see if the test passed or not.
 - [ ] Pycharm doesn't hide the excluded folders
 - [ ] Firefox opens a tab 'Firefox Privacy Notice'
 
