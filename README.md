@@ -61,6 +61,7 @@ care of downloading, extracting and setting up the folder architecture.
 
 - [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
 - [ ] Setup an SSH connection on each computer
+- [ ] Merge the repos `chip-8` and `mario-python` into `ji`
 
 ## Contact
 
