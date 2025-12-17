@@ -42,7 +42,7 @@ def max(h1: int, h2: int) -> int:
 
 def give_grade(grade: int):
     """
-    Affiche dans la console la lettre correspondant à la note
+    Retourn la lettre correspondant à la note
     """
     pass
 

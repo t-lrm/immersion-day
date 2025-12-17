@@ -18,8 +18,6 @@ moulinette.add_test(test_ask_div)
 moulinette.add_test(test_xor)
 moulinette.add_test(test_nand)
 moulinette.add_test(test_is_even)
-moulinette.add_test(test_print_pyramid)
-moulinette.add_test(test_count_division)
 moulinette.add_test(test_is_amstrong)
 moulinette.add_test(test_print_pyramid)
 

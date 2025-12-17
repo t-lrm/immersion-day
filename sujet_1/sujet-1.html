@@ -2831,7 +2831,7 @@ else:
               </button>
             </div>
             <div class="card-body collapse" id="e7a0ab3b-fbef-4607-901d-e04b3a4e778b">
-              <div class="card-text">À l'académie des toads, les élèves sont notés sur 20. Un des enseignant aimerait avoir un programme pour l'aider à donner une note à ses élèves et demande à Mario d'écrire un programme qui convertit la note sur 20 en une lettre de A à F selon le tableau suivant:<br><br>$$ \begin{array}{|c|c|}\hline Note & Lettre \\ \hline 0 \leq note < 10 & F \\ \hline 10 \leq note < 12 & E \\ \hline 12 \leq note < 14 & D \\ \hline 14 \leq note < 16 & C \\ \hline 16 \leq note < 18 & B \\ \hline 18 \leq note \leq 20 & A \\ \hline \end{array} $$<br><br>Mario, qui essaye depuis plusieurs jours de faire cela, vous demande de l'aide pour écrire la fonction give_grade qui prend en paramètre une note sur 20 et qui <b>affiche la lettre dans la console</b>.<br><br>
+              <div class="card-text">À l'académie des toads, les élèves sont notés sur 20. Un des enseignant aimerait avoir un programme pour l'aider à donner une note à ses élèves et demande à Mario d'écrire un programme qui convertit la note sur 20 en une lettre de A à F selon le tableau suivant:<br><br>$$ \begin{array}{|c|c|}\hline Note & Lettre \\ \hline 0 \leq note < 10 & F \\ \hline 10 \leq note < 12 & E \\ \hline 12 \leq note < 14 & D \\ \hline 14 \leq note < 16 & C \\ \hline 16 \leq note < 18 & B \\ \hline 18 \leq note \leq 20 & A \\ \hline \end{array} $$<br><br>Mario, qui essaye depuis plusieurs jours de faire cela, vous demande de l'aide pour écrire la fonction give_grade qui prend en paramètre une note sur 20 et qui <b>retourne la lettre correspondante</b>.<br><br>
                 <div class="card">
                   <div class="card-header text-white None" style="background-color: #74A1F2!important;">
                     <div class="card-title-format">Information</div>
@@ -2863,7 +2863,7 @@ else:
                     <div class="card-title-format">Warning(s)</div>
                   </div>
                   <div class="card-body">
-                    <div class="card-text">Mario a oublié de préciser que la note doit être supérieure ou égale à 0 et inférieure ou égale à 20. Si la note n'est pas dans cet intervalle, afficher le message "Note invalide" en console.<br></div>
+                    <div class="card-text">Mario a oublié de préciser que la note doit être supérieure ou égale à 0 et inférieure ou égale à 20. Si la note n'est pas dans cet intervalle, retourner le message "Note invalide".<br></div>
                   </div>
                 </div><br>
                 <div class="card">
@@ -2872,7 +2872,7 @@ else:
                   </div>
                   <div class="card-body" style="background-color: #282c34!important">
                     <div class="card-text">
-                      <pre><code class="hljs csharp">def give_grade(grade: int) -&gt; int:
+                      <pre><code class="hljs csharp">def give_grade(grade: int) -&gt; str:
   pass
 </code></pre>
                     </div>
