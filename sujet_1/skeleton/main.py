@@ -40,7 +40,7 @@ def max(h1: int, h2: int) -> int:
     pass
 
 
-def give_grade(grade: int):
+def give_grade(grade: int) -> str:
     """
     Retourn la lettre correspondant à la note
     """
