@@ -4,7 +4,7 @@
 
 As an organizer, you should:
 1. Login to a PIE computer
-2. Clone this repository
+2. Clone this repository (in SSH not in HTTPS of course)
 3. Start the server with `python3 server.py`
 
 Now for each student computer:
@@ -66,6 +66,7 @@ output when a function doesn't return anything)
 - [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
 - [ ] Setup an SSH connection on each computer
 - [ ] Merge the repos `chip-8` and `mario-python` into `ji`
+- [ ] Add a map of the room to show which PC should be boot and tell that a pc should not be leave unbooted to leave it for the OCR presentation
 
 ## Contact
 
