@@ -53,7 +53,7 @@ care of downloading, extracting and setting up the folder architecture.
 ### Bugs to fix
 
 - [ ] Update the intro of subject 1 to explain how to run a test suite
-- [ ] Update subject 1: avoid using prints in function `give_grade` as it's confusing for the students
+- [X] Update subject 1: avoid using prints in function `give_grade` as it's confusing for the students
 - [ ] Error on the test `prints_quare` when the function is not correct (I think
 it's a problem with the moulinette that doesn't know how to display the expected
 output when a function doesn't return anything)
@@ -66,7 +66,7 @@ output when a function doesn't return anything)
 - [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
 - [ ] Setup an SSH connection on each computer
 - [ ] Merge the repos `chip-8` and `mario-python` into `ji`
-- [ ] Add a map of the room to show which PC should be boot and tell that a pc should not be leave unbooted to leave it for the OCR presentation
+- [ ] Add a map of the room to show which PC should be booted and tell that a pc should not be booted so that it can be used for the OCR presentation
 
 ## Contact
 
