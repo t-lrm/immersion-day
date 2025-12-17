@@ -52,7 +52,7 @@ care of downloading, extracting and setting up the folder architecture.
 
 ### Bugs to fix
 
-- [ ] Update the intro of subject 1 to explain how to run a test suite
+- [ ] Update the intro of subject 1 to explain how to run a test suite (confirm with Lionel if we can use markdown instead of the weird HTML)
 - [X] Update subject 1: avoid using prints in function `give_grade` as it's confusing for the students
 - [ ] Error on the test `prints_quare` when the function is not correct (I think
 it's a problem with the moulinette that doesn't know how to display the expected
