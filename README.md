@@ -4,7 +4,7 @@
 
 As an organizer, you should:
 1. Login to a PIE computer
-2. Clone this repository (in SSH not in HTTPS of course)
+2. Clone this repository _(in SSH not in HTTPS of course)_
 3. Start the server with `python3 server.py`
 
 Now for each student computer:
