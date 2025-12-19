@@ -58,6 +58,7 @@ care of downloading, extracting and setting up the folder architecture.
 - [ ] It could be great to add a file where students can see the result of their function. Now, they only see if the test passed or not.
 - [ ] Pycharm doesn't hide the excluded folders
 - [ ] Firefox opens a tab 'Firefox Privacy Notice'
+- [ ] Handle infinite loop : fail the test when their is an infinite loop with an explicit message
 
 ### Improvements to do
 
@@ -65,6 +66,7 @@ care of downloading, extracting and setting up the folder architecture.
 - [ ] Setup an SSH connection on each computer
 - [ ] Merge the repos `chip-8` and `mario-python` into `ji`
 - [ ] Add a map of the room to show which PC should be booted and tell that a pc should not be booted so that it can be used for the OCR presentation
+- [ ] In the config script, disable the sleep mode
 
 ## Contact
 
