@@ -172,6 +172,6 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             pass
     finally:
-        print("\n[SERVE] Shutting down… (press Ctrl+C again if it doesn’t exit)")
+        print("\n[SERVE] Shutting down... (press Ctrl+C again if it doesn’t exit)")
         sys.exit(0)
 

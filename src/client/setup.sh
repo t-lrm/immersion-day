@@ -4,11 +4,12 @@
 
 CONTACT="timothee.le-roux-maertens@epita.fr"
 
-# Host informations (substitute by server.py)
+# Host informations (substituted by server.py)
 IP="__IP__"
 PORT="__PORT__"
 
 OUT_PATH="$HOME/subjects"
+ZIP_NAME="bundle.zip"
 
 ALACRITTY_PID=$(pgrep -o -x alacritty)
 
@@ -32,7 +33,7 @@ INIT_TEXT="Bonjour et bienvenue en séance de TP !\n\n"\
 
 INIT_CMD="i3-msg floating enable > /dev/null && echo -e \"$INIT_TEXT\" && kill \"$ALACRITTY_PID\""
 
-PYTHON3_PATH=$(whereis python3 | cut -d' ' -f2 | head -n1)
+PYTHON3_PATH=$(whereis python3 | cut -d' ' -f2 | head -n 1)
 ALIAS_ALED="alias aled=\"echo -e \\\"$CMD_LIST\\\"\""
 ALIAS_IDE="alias ide=\"(nohup pycharm-community $OUT_PATH < /dev/null > /dev/null 2>&1 &) && exit\""
 
@@ -63,17 +64,15 @@ echo $ALIAS_ALED >> ~/.bashrc
 echo $ALIAS_IDE >> ~/.bashrc
 
 # Install pycharm
-if [ -f /etc/NIXOS ]; then
-    echo "INFO: Installing Pycharm..."
-    export NIXPKGS_ALLOW_UNFREE=1
-    nix profile install nixpkgs#jetbrains.pycharm-community --impure
-fi
+echo "INFO: Installing Pycharm..."
+export NIXPKGS_ALLOW_UNFREE=1
+nix profile install nixpkgs#jetbrains.pycharm-community --impure
 
 # ===== DOWNLOAD SUBJECTS =====
 
-curl -s "http://$IP:$PORT" --output "$OUT_PATH/bundle.zip"
-unzip "$OUT_PATH/bundle.zip" -d "$OUT_PATH" > /dev/null
-rm "$OUT_PATH/bundle.zip"
+curl -s "http://$IP:$PORT" --output "$OUT_PATH/$ZIP_NAME"
+unzip "$OUT_PATH/$ZIP_NAME" -d "$OUT_PATH" > /dev/null
+rm "$OUT_PATH/$ZIP_NAME"
 
 # ===== COPY PYCHARM CONSENT VARIABLES =====
 
