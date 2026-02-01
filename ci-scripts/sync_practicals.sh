@@ -32,7 +32,8 @@ while read -r name url branch; do
         --include='*/' \
         --include-from="$WHITELIST" \
         --exclude='*' \
-        ./ "$DEST_ROOT/$name" 
+        "$tmp/repo/" \
+        "$DEST_ROOT/$name/"
 
     # Copy the subject html
     cp "$tmp/repo/subject.html" "$DEST_SUBJECTS/${name}.html"
