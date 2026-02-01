@@ -1,0 +1,7 @@
+services:
+  fileserver:
+    build: .
+    network_mode: host
+    env_file:
+      - .env
+

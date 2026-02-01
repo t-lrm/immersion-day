@@ -1,0 +1,22 @@
+server {
+  listen ${PORT_SETUP};
+  root ${SH_DST_FOLDER};
+
+  index ${SH_DST_FILE};
+}
+
+server {
+  listen ${PORT_SUBJECTS};
+  root ${SUBJECT_FOLDER};
+
+  location / {
+    autoindex on;
+  }
+}
+
+server {
+  listen ${PORT_ZIP};
+  root ${ZIP_DST_FOLDER};
+
+  index ${ZIP_DST_FILE};
+}
