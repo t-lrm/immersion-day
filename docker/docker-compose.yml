@@ -1,9 +1,9 @@
 services:
   fileserver:
     build:
-      context: .
+      context: ..
       dockerfile: docker/Dockerfile
     network_mode: host
     env_file:
-      - docker/.env
+      - .env
 

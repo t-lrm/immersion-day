@@ -4,7 +4,7 @@ set -euo pipefail
 
 CONTACT="timothee.le-roux-maertens@epita.fr"
 
-# Host informations (substituted by docker_entrypoint.sh)
+# Host informations (substituted by docker/entrypoint.sh)
 IP="__IP__"
 PORT="__PORT_ZIP__"
 SUBJECTS_URL="http://__IP__:__PORT_SUBJECTS__"

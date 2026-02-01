@@ -4,5 +4,6 @@ WORKDIR /app
 
 COPY . /app
 COPY docker/fileserver.conf.template /etc/nginx/templates/fileserver.conf.template
-COPY docker/docker_entrypoint.sh /docker-entrypoint.d/10-build-assets.sh
+COPY docker/entrypoint.sh /docker-entrypoint.d/10-build-assets.sh
 RUN chmod +x /docker-entrypoint.d/10-build-assets.sh
+
