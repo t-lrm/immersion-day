@@ -26,7 +26,7 @@ while read -r name url; do
         --include='*/' \
         --include-from=whitelist.include \
         --exclude='*' \
-        ./  "${DIR_DST}/"
+        ./ "$DEST_ROOT/$name" 
   
 done < "${PRACTICALS}"
 
