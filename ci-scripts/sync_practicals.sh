@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT="$(pwd)"
+PRACTICALS="ci-scripts/practicals.list"
 DEST_ROOT="ci-imported"
 DEST_SUBJECTS="subjects"
 BRANCH="main"
@@ -27,5 +28,5 @@ while read -r name url; do
         --exclude='*' \
         ./  "${DIR_DST}/"
   
-done < "${ROOT}/practicals.list"
+done < "${PRACTICALS}"
 
