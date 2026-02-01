@@ -18,7 +18,7 @@ while read -r name url; do
     trap 'rm -rf "$tmp"' RETURN
   
     git clone --depth 1 --branch "$BRANCH" \
-       "https://gitlab-ci-token:${CI_JOB_TOKEN}@${url#https://}" \
+       "https://gitlab-ci-token:${CI_JOB_TOKEN}@${url}" \
        "$tmp/repo"
   
     mkdir -p "$DEST_ROOT/$name"
