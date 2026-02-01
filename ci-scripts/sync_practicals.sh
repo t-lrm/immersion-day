@@ -6,7 +6,7 @@ PRACTICALS="ci-scripts/practicals.list"
 WHITELIST="ci-scripts/whitelist.include"
 DEST_ROOT="ci-imported"
 DEST_SUBJECTS="subjects"
-BRANCH="main"
+BRANCH="tlrm/rework" #FIXME: change to main when merging
 
 rm -rf "$DEST_ROOT"
 mkdir -p "$DEST_ROOT"
