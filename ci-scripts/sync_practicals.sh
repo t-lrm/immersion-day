@@ -34,12 +34,12 @@ while read -r name url branch; do
         --exclude='*' \
         ./ "$DEST_ROOT/$name" 
 
-    # Move the subject html
-    mv "$tmp/repo/subject.html" "$DEST_SUBJECTS/${name}.html"
+    # Copy the subject html
+    cp "$tmp/repo/subject.html" "$DEST_SUBJECTS/${name}.html"
 
-    # Move the ref of the subject
+    # Copy the ref of the subject
     mkdir "$DEST_SUBJECTS/${name}"
-    mv "$tmp/repo/ref/*" "$DEST_SUBJECTS/${name}"
+    cp "$tmp/repo/ref/*" "$DEST_SUBJECTS/${name}"
 
     rm -rf "$tmp"
     trap - EXIT
