@@ -6,19 +6,18 @@ PRACTICALS="ci-scripts/practicals.list"
 WHITELIST="ci-scripts/whitelist.include"
 DEST_ROOT="ci-imported"
 DEST_SUBJECTS="subjects"
-BRANCH="tlrm/rework" #FIXME: change to main when merging
 
 rm -rf "$DEST_ROOT"
 mkdir -p "$DEST_ROOT"
 
-while read -r name url; do
+while read -r name url branch; do
     [[ -z "${name:-}" ]] && continue
-    echo "Sync $name from $url ($BRANCH)"
+    echo "Sync $name from $url ($branch)"
   
     tmp="$(mktemp -d)"
     trap 'rm -rf "$tmp"' RETURN
   
-    git clone --depth 1 --branch "$BRANCH" \
+    git clone --depth 1 --branch "$branch" \
        "https://gitlab-ci-token:${CI_JOB_TOKEN}@${url#https://}" \
        "$tmp/repo"
   

@@ -16,7 +16,7 @@ sync_practicals:
     - |
       if ! git diff --cached --quiet; then
         git commit -m "Sync practicals"
-        git push origin HEAD:tlrm/rework # FIXME: change to main when merging
+        git push origin "HEAD:${CI_COMMIT_BRANCH}"
       else
         echo "No changes."
       fi
