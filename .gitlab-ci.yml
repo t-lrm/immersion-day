@@ -12,7 +12,7 @@ sync_practicals:
     - git config user.name  "CI Bot"
   script:
     - bash ci-scripts/sync_practicals.sh
-    - git add ci-imported
+    - git add -A
     - |
       if ! git diff --cached --quiet; then
         git commit -m "Sync practicals"
