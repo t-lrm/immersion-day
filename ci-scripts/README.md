@@ -24,3 +24,10 @@ Considering this file architrecture, we will import those folders:
 - `other`
 
 And the file `subject.html` will be imported inside the `subjects` folder.
+
+### CI/CD Token
+
+In your practical repo, you must set a token.
+In Gitlab, go to `Settings > CI/CD > Job token permissions`.
+Then inside `CI/CD job token allowlist`, add this repo (`timothee.le-roux-maertens/ji`) with default permissions.
+
