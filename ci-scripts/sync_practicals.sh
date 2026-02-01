@@ -27,4 +27,5 @@ while read -r name url; do
         --exclude='*' \
         ./  "${DIR_DST}/"
   
-done < practicals.list
+done < "${ROOT}/practicals.list"
+
