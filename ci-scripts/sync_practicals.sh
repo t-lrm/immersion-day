@@ -34,6 +34,9 @@ while read -r name url branch; do
         --exclude='*' \
         ./ "$DEST_ROOT/$name" 
 
+    # Debug purpose
+    tree -L 4 "$tmp"
+
     # Copy the subject html
     cp "$tmp/repo/subject.html" "$DEST_SUBJECTS/${name}.html"
 
