@@ -6,16 +6,22 @@ PRACTICALS="ci-scripts/practicals.list"
 WHITELIST="ci-scripts/whitelist.include"
 DEST_ROOT="ci-imported"
 DEST_SUBJECTS="subjects"
+DEST_REF="ref"
 
 rm -rf "$DEST_ROOT"
+rm -rf "$DEST_SUBJECTS"
+rm -rf "$DEST_REF"
+
 mkdir -p "$DEST_ROOT"
+mkdir -p "$DEST_SUBJECTS"
+mkdir "$DEST_REF"
 
 while read -r name url branch; do
     [[ -z "${name:-}" ]] && continue
     echo "Sync $name from $url ($branch)"
   
     tmp="$(mktemp -d)"
-    trap 'rm -rf "$tmp"' RETURN
+    trap 'rm -rf "$tmp"' EXIT
   
     git clone --depth 1 --branch "$branch" \
        "https://gitlab-ci-token:${CI_JOB_TOKEN}@${url#https://}" \
@@ -27,6 +33,16 @@ while read -r name url branch; do
         --include-from="$WHITELIST" \
         --exclude='*' \
         ./ "$DEST_ROOT/$name" 
+
+    # Move the subject html
+    mv "$tmp/repo/subject.html" "$DEST_SUBJECTS/${name}.html"
+
+    # Move the ref of the subject
+    mkdir "$DEST_SUBJECTS/${name}"
+    mv "$tmp/repo/ref/*" "$DEST_SUBJECTS/${name}"
+
+    rm -rf "$tmp"
+    trap - EXIT
   
 done < "${PRACTICALS}"
 
