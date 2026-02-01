@@ -3,6 +3,7 @@ set -euo pipefail
 
 ROOT="$(pwd)"
 PRACTICALS="ci-scripts/practicals.list"
+WHITELIST="ci-scripts/whitelist.include"
 DEST_ROOT="ci-imported"
 DEST_SUBJECTS="subjects"
 BRANCH="main"
@@ -24,7 +25,7 @@ while read -r name url; do
     mkdir -p "$DEST_ROOT/$name"
     rsync -a --delete --delete-excluded \
         --include='*/' \
-        --include-from=whitelist.include \
+        --include-from="$WHITELIST" \
         --exclude='*' \
         ./ "$DEST_ROOT/$name" 
   
