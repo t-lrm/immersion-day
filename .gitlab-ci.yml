@@ -1,4 +1,4 @@
-istages: [sync]
+stages: [sync]
 
 sync_practicals:
   stage: sync
