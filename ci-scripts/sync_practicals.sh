@@ -39,7 +39,7 @@ while read -r name url branch; do
 
     # Copy the ref of the subject
     mkdir "$DEST_SUBJECTS/${name}"
-    cp "$tmp/repo/ref" "$DEST_SUBJECTS/${name}"
+    cp -r "$tmp/repo/ref" "$DEST_SUBJECTS/${name}"
 
     rm -rf "$tmp"
     trap - EXIT
