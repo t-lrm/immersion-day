@@ -66,6 +66,7 @@ care of downloading, extracting and setting up the folder architecture.
 - [ ] Setup an SSH connection on each computer
 - [ ] Add a map of the room to show which PC should be booted and tell that a pc should not be booted so that it can be used for the OCR presentation
 - [ ] In the config script, disable the sleep mode
+- [ ] Push the testsuites results back to the server to get some statistics
 
 ## Contact
 
