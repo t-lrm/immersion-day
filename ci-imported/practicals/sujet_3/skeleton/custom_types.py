@@ -9,7 +9,7 @@ class FixedSizeInteger:
         :param size: The number of bits used to store the value.
         :param value: The value to be stored, which will be confined to the specified size.
         """
-        self.max = 2 ** size
+        self.max = 2**size
         self._size = size
         self.value = 0
 
@@ -28,20 +28,20 @@ class FixedSizeInteger:
     @property
     def max_value(self):
         """Gets the value stored in the type."""
-        return 2 ** self._size - 1
+        return 2**self._size - 1
 
     @property
     def value(self):
         """Gets the value stored in the type."""
-        return self._value % (2 ** self._size)
+        return self._value % (2**self._size)
 
     @value.setter
     def value(self, new_value):
         """Sets the value, modulo the maximum allowed value for the size."""
-        self._value = new_value % (2 ** self._size)
+        self._value = new_value % (2**self._size)
 
     def binary(self):
-        return format(self.value, f'0{self.size}b')
+        return format(self.value, f"0{self.size}b")
 
     def _operation(self, other, operation):
         if isinstance(other, int):

@@ -53,4 +53,4 @@ class Memory:
             raise ValueError("ROM is too big.")
 
         # Load ROM into RAM starting at 0x200
-        self.ram[0x200:0x200 + len(file_bytes)] = file_bytes
+        self.ram[0x200 : 0x200 + len(file_bytes)] = file_bytes

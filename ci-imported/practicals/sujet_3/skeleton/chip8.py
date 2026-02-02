@@ -3,6 +3,7 @@ import time
 from skeleton.bits import Bits
 from skeleton.cpu import Cpu
 
+
 class Chip8(Cpu):
     def __init__(self, random):
         super().__init__(random)
@@ -14,10 +15,22 @@ class Chip8(Cpu):
 
         # Dictionary of operation handlers
         op_handlers = {
-            0x0: self.handle_0, 0x1: self.handle_1, 0x2: self.handle_2, 0x3: self.handle_3,
-            0x4: self.handle_4, 0x5: self.handle_5, 0x6: self.handle_6, 0x7: self.handle_7,
-            0x8: self.handle_8, 0x9: self.handle_9, 0xA: self.handle_A, 0xB: self.handle_B,
-            0xC: self.handle_C, 0xD: self.handle_D, 0xE: self.handle_E, 0xF: self.handle_F
+            0x0: self.handle_0,
+            0x1: self.handle_1,
+            0x2: self.handle_2,
+            0x3: self.handle_3,
+            0x4: self.handle_4,
+            0x5: self.handle_5,
+            0x6: self.handle_6,
+            0x7: self.handle_7,
+            0x8: self.handle_8,
+            0x9: self.handle_9,
+            0xA: self.handle_A,
+            0xB: self.handle_B,
+            0xC: self.handle_C,
+            0xD: self.handle_D,
+            0xE: self.handle_E,
+            0xF: self.handle_F,
         }
 
         # Get the operation handler based on the opcode
@@ -43,4 +56,4 @@ class Chip8(Cpu):
                 self.sound_timer -= 1
             self.display.draw()
             self.display.update()
-            time.sleep(.001)
+            time.sleep(0.001)

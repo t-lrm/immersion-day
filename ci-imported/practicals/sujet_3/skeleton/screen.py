@@ -25,7 +25,16 @@ class Display:
         color = (255, 255, 255) if value else (0, 0, 0)
         x = i % 64
         y = i // 64
-        pygame.draw.rect(self.screen, color,(x * self.pixel_size, y * self.pixel_size, self.pixel_size, self.pixel_size))
+        pygame.draw.rect(
+            self.screen,
+            color,
+            (
+                x * self.pixel_size,
+                y * self.pixel_size,
+                self.pixel_size,
+                self.pixel_size,
+            ),
+        )
 
     def clear(self):
         """Clears the screen by filling it with black."""
@@ -43,4 +52,3 @@ class Display:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-
