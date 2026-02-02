@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from EmuDev.custom_types import UShort, Byte
+from skeleton.custom_types import UShort, Byte
 
 
 class Memory:

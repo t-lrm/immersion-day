@@ -1,7 +1,7 @@
 import time
 
-from EmuDev.bits import Bits
-from EmuDev.cpu import Cpu
+from skeleton.bits import Bits
+from skeleton.cpu import Cpu
 
 class Chip8(Cpu):
     def __init__(self, random):

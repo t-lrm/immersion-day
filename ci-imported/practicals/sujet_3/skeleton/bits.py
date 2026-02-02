@@ -1,4 +1,4 @@
-from EmuDev.custom_types import UShort, Byte
+from skeleton.custom_types import UShort, Byte
 
 
 class Bits:

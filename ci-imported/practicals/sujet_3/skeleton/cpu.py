@@ -1,10 +1,10 @@
 import random
 
-from EmuDev.custom_types import UShort, Byte, Stack
-from EmuDev.memory import Memory
-from EmuDev.screen import Display
-from EmuDev.keypad import Keypad
-from EmuDev.bits import Bits
+from skeleton.custom_types import UShort, Byte, Stack
+from skeleton.memory import Memory
+from skeleton.screen import Display
+from skeleton.keypad import Keypad
+from skeleton.bits import Bits
 
 
 class Cpu:
