@@ -54,7 +54,7 @@ care of downloading, extracting and setting up the folder architecture.
 
 - [ ] Update the intro of subject 1 to explain how to run a test suite ~~(confirm with Lionel if we can use markdown instead of the weird HTML)~~
 - [X] Update subject 1: avoid using prints in function `give_grade` as it's confusing for the students
-- [ ] It could be greate to have more verbose when a function fails instead of a simples message like "function failed"
+- [ ] It could be great to have more verbose when a function fails instead of a simples message like "function failed"
 - [ ] It could be great to add a file where students can see the result of their function. Now, they only see if the test passed or not.
 - [ ] Pycharm doesn't hide the excluded folders
 - [ ] Firefox opens a tab 'Firefox Privacy Notice'
@@ -64,7 +64,6 @@ care of downloading, extracting and setting up the folder architecture.
 
 - [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
 - [ ] Setup an SSH connection on each computer
-- [ ] Merge the repos `chip-8` and `mario-python` into `ji`
 - [ ] Add a map of the room to show which PC should be booted and tell that a pc should not be booted so that it can be used for the OCR presentation
 - [ ] In the config script, disable the sleep mode
 
