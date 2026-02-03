@@ -1,0 +1,30 @@
+{
+  "practicals": {
+    "sources": [
+      {
+        "name": "subject_1",
+        "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/mario-python-1.git",
+        "branch": "main"
+      },
+      {
+        "name": "subject_2",
+        "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/mario-python-2.git",
+        "branch": "main"
+      },
+      {
+        "name": "subject_3",
+        "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/chip-8.git",
+        "branch": "tlrm/rework"
+      }
+    ],
+    "include": [
+      "skeleton/",
+      "test/",
+      "other/"
+    ]
+  },
+  "moulinette": {
+      "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/moulinette-ji.git",
+      "branch": "main"
+  }
+}
