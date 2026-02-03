@@ -4,7 +4,6 @@ sync_practicals:
   stage: sync
   image: alpine:latest
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "push"'
     - if: '$CI_PIPELINE_SOURCE == "schedule"'
     - if: '$CI_PIPELINE_SOURCE == "web"'
   before_script:
@@ -12,4 +11,4 @@ sync_practicals:
     - git config user.email "ci-bot@epita.fr"
     - git config user.name  "CI Bot"
   script:
-    - bash ci-scripts/sync_practicals.sh
+    - exit 1
