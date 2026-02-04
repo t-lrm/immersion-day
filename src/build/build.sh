@@ -49,7 +49,7 @@ branch="$(jq -r '.moulinette.branch' "$CFG")"
   echo "Cloning ${url} (${branch})..."
   git clone --depth 1 --branch "$branch" "$url" "$tmp/repo" 2>/dev/null
 
-  cp -r "$tmp/repo" "$MOULINETTE"
+  cp -r "$tmp/repo"/* "$MOULINETTE"
 )
 
 # Zip the template folder
