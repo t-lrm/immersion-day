@@ -1,22 +1,7 @@
 server {
-  listen ${PORT_SETUP};
-  root ${SH_DST_FOLDER};
+  # Allowed port range: 42000 - 42999
+  listen 42000;
+  root /app;
 
-  index ${SH_DST_FILE};
-}
-
-server {
-  listen ${PORT_SUBJECTS};
-  root ${SUBJECT_FOLDER};
-
-  location / {
-    autoindex on;
-  }
-}
-
-server {
-  listen ${PORT_ZIP};
-  root ${ZIP_DST_FOLDER};
-
-  index ${ZIP_DST_FILE};
+  index bundle.zip;
 }
