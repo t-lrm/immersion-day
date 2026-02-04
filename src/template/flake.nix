@@ -35,7 +35,6 @@
 
     pyEnv = python.withPackages (ps: [
       moulinetteji
-      ps.ipython
       ps.pygame
       ps.black
     ]);
