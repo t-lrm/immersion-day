@@ -1,16 +1,23 @@
 #!/bin/sh
 set -euo pipefail
 
-CFG="${1:-../manifest.json}"
+CFG="${1:-src/manifest.json}"
 
-PRACTICALS="../template/practicals"
-MOULINETTE="../template/moulinette"
-SUBJECTS="../template/static/subjects"
+ROOT=$(pwd)
+PRACTICALS="${ROOT}/src/template/practicals"
+MOULINETTE="${ROOT}/src/template/moulinette"
+SUBJECTS="${ROOT}/src/template/static/subjects"
 
-SRV="../../srv"
+SRV="${ROOT}/srv"
 ZIP="${SRV}/bundle.zip"
 
-DOCKER_COMPOSE="../../docker/docker-compose.yml"
+DOCKER_COMPOSE="${ROOT}/docker/docker-compose.yml"
+
+# Clean paths
+rm -rf "${PRACTICALS}"/*
+rm -rf "${MOULINETTE}"/*
+rm -rf "${SUBJECTS}"/*
+rm -rf "${SRV}"/*
 
 # Clone each practical
 mapfile -t includes < <(jq -r '.practicals.include[]' "$CFG")
@@ -21,13 +28,21 @@ jq -c '.practicals.sources[]' "$CFG" | while read -r src; do
 
   tmp=$(mktemp -d)
 
-  git clone --depth 1 --branch "$branch" "$url" "$tmp/repo"
+  echo "Cloning ${url} (${branch})..."
+  git clone --depth 1 --branch "$branch" "$url" "$tmp/repo" 2>/dev/null
 
   mkdir "${PRACTICALS}/${name}"
 
   # Copy only whitelisted dirs/files from the cloned repo
   for p in "${includes[@]}"; do
-    cp -r "$tmp/repo/${p%/}" "${PRACTICALS}/${name}/"
+    src="$tmp/repo/${p%/}"
+    dst="${PRACTICALS}/${name}/"
+
+    if [[ -d "$src" ]]; then
+      cp -r "$src" "$dst"
+    else
+      echo "Skipping missing directory: $src" >&2
+    fi
   done
 
   # Copy subject page in it's own folder
@@ -38,14 +53,21 @@ done
 
 
 # Clone the moulinette
-mouli_url="$(jq -r '.moulinette.url' "$CFG")"
-mouli_branch="$(jq -r '.moulinette.branch' "$CFG")"
-git clone --depth 1 --branch "$mouli_url" "$mouli_branch" "$MOULINETTE"
+url="$(jq -r '.moulinette.url' "$CFG")"
+branch="$(jq -r '.moulinette.branch' "$CFG")"
+(
+  tmp=$(mktemp -d)
+
+  echo "Cloning ${url} (${branch})..."
+  git clone --depth 1 --branch "$branch" "$url" "$tmp/repo" 2>/dev/null
+
+  cp -r "$tmp/repo" "$MOULINETTE"
+)
 
 # Zip the template folder
-rm -f "$ZIP"
+mkdir "$SRV"
 (
-  cd ../template
+  cd "${ROOT}/src/template"
   zip -r "$ZIP" .
 )
 
