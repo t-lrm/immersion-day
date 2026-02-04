@@ -1,0 +1,10 @@
+<application>
+  <component name="ProjectJdkTable">
+    <jdk version="2">
+      <name value="Python 3.11 (chip-8)" />
+      <type value="Python SDK" />
+      <version value="Python 3.11.14" />
+      <homePath value="$USER_HOME$/.nix-profile/bin/python" />
+    </jdk>
+  </component>
+</application>

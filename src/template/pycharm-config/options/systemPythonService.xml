@@ -1,0 +1,9 @@
+<application>
+  <component name="SystemPythonService">
+    <option name="userProvidedPythons">
+      <list>
+        <option value="$USER_HOME$/.nix-profile/bin/python" />
+      </list>
+    </option>
+  </component>
+</application>
