@@ -19,7 +19,7 @@
     ],
     "include": [
       "skeleton/",
-      "test/",
+      "tests/",
       "other/"
     ]
   },
