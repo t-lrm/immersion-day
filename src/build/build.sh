@@ -1,25 +1,11 @@
 #!/bin/sh
 set -euo pipefail
+source "$(dirname "${BASH_SOURCE[0]}")/env.sh"
 
-CFG="${1:-src/manifest.json}"
+CFG="${1:-$CFG_DEFAULT}"
 
-ROOT=$(pwd)
-PRACTICALS="${ROOT}/src/template/practicals"
-MOULINETTE="${ROOT}/src/template/moulinette"
-SUBJECTS="${ROOT}/src/template/static/subjects"
-
-SRV="${ROOT}/srv"
-ZIP="${SRV}/bundle.zip"
-
-DOCKER_COMPOSE="${ROOT}/docker/docker-compose.yml"
-
-# Clean paths
-rm -rf "${PRACTICALS}"/*
-rm -rf "${MOULINETTE}"/*
-rm -rf "${SUBJECTS}"/*
-rm -rf "${SRV}"/*
-
-exit 1
+# Clean the destination folders
+./"$(dirname "${BASH_SOURCE[0]}")/clean.sh"
 
 # Clone each practical
 mapfile -t includes < <(jq -r '.practicals.include[]' "$CFG")
@@ -69,9 +55,9 @@ branch="$(jq -r '.moulinette.branch' "$CFG")"
 # Zip the template folder
 mkdir -p "$SRV"
 (
-  cd "${ROOT}/src/template"
-  zip -r "$ZIP" .
+  cd "${REPO_ROOT}/src/template"
+  zip --recurse-paths --quiet "$ZIP" .
 )
 
 # Start docker
-docker compose -f $DOCKER_COMPOSE up --build --detach
+docker compose -f $DOCKER_COMPOSE up --build
