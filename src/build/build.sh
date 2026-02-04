@@ -19,6 +19,8 @@ rm -rf "${MOULINETTE}"/*
 rm -rf "${SUBJECTS}"/*
 rm -rf "${SRV}"/*
 
+exit 1
+
 # Clone each practical
 mapfile -t includes < <(jq -r '.practicals.include[]' "$CFG")
 jq -c '.practicals.sources[]' "$CFG" | while read -r src; do
@@ -65,7 +67,7 @@ branch="$(jq -r '.moulinette.branch' "$CFG")"
 )
 
 # Zip the template folder
-mkdir "$SRV"
+mkdir -p "$SRV"
 (
   cd "${ROOT}/src/template"
   zip -r "$ZIP" .
