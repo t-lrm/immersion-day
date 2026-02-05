@@ -8,6 +8,6 @@ firefox --new-window "${ROOT}/static/subjects"
 
 nix profile add .#default
 
-pycharm & 2>&1 /dev/null
+nohup pycharm &>/dev/null &
 
 pkill -ox alacritty
