@@ -5,7 +5,7 @@ source "$(dirname "${BASH_SOURCE[0]}")/env.sh"
 CFG="${1:-$CFG_DEFAULT}"
 
 # Clean the destination folders
-./"$(dirname "${BASH_SOURCE[0]}")/clean.sh"
+"${REPO_ROOT}/src/build/clean.sh"
 
 # Clone each practical
 mapfile -t includes < <(jq -r '.practicals.include[]' "$CFG")
@@ -17,7 +17,7 @@ jq -c '.practicals.sources[]' "$CFG" | while read -r src; do
   tmp=$(mktemp -d)
 
   echo "Cloning ${url} (${branch})..."
-  git clone --depth 1 --branch "$branch" "$url" "$tmp/repo" 2>/dev/null
+  git clone --depth 1 --branch "$branch" "$url" "$tmp/repo"
 
   mkdir "${PRACTICALS}/${name}"
 
@@ -47,10 +47,16 @@ branch="$(jq -r '.moulinette.branch' "$CFG")"
   tmp=$(mktemp -d)
 
   echo "Cloning ${url} (${branch})..."
-  git clone --depth 1 --branch "$branch" "$url" "$tmp/repo" 2>/dev/null
+  git clone --depth 1 --branch "$branch" "$url" "$tmp/repo"
 
   cp -r "$tmp/repo"/* "$MOULINETTE"
 )
+
+# Populate the recent projects config file of Pycharm
+python3 "${REPO_ROOT}/src/build/populate_projects.py" \
+  --manifest "$CFG" \
+  --out "${PYCHARM_CONFIG}/options/recentProjects.xml" \
+  --projects-root "$USER_ROOT/practicals"
 
 # Zip the template folder
 mkdir -p "$SRV"

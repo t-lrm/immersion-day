@@ -6,5 +6,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/bin/env.sh"
 
 firefox --new-window "${ROOT}/static/subjects"
 
-pkill -ox alacritty
+nix profile add .#default
 
+pycharm & 2>&1 /dev/null
+
+pkill -ox alacritty

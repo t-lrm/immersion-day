@@ -8,5 +8,6 @@ __pycache__
 src/template/practicals/*
 src/template/moulinette/*
 src/template/static/subjects/*
+src/template/pycharm-config/options/recentProjects.xml
 
 srv

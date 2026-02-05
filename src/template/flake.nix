@@ -41,18 +41,47 @@
 
     pycharm = pkgs.jetbrains.pycharm;
 
+    # PyCharm config template folder
+    pycharmConfigTemplate = ./pycharm-config;
+    pycharmConfigDirName = "PyCharm2025.3";
+
+    pycharmWithConfig = pkgs.writeShellApplication {
+      name = "pycharm";
+      runtimeInputs = [
+        pkgs.coreutils
+        pkgs.findutils
+        pycharm
+      ];
+      text = ''
+        set -euo pipefail
+
+        src="${pycharmConfigTemplate}"
+        dst="$HOME/.config/JetBrains/${pycharmConfigDirName}"
+
+        if [ ! -d "$dst" ]; then
+          mkdir -p "$(dirname "$dst")"
+          cp -r "$src" "$dst"
+          chmod -R u+rw "$dst"
+        fi
+
+        exec "${pycharm}/bin/pycharm" "$@"
+      '';
+    };
+
+
     ji = pkgs.symlinkJoin {
       name = "ji-tools";
       paths = [
         pyEnv
         pkgs.git
-        pycharm
+        pycharmWithConfig
       ];
     };
   in
   {
     packages.${system} = {
       inherit moulinetteji pyEnv pycharm ji;
+      pycharmWithConfig = pycharmWithConfig;
       default = ji;
     };
   };
