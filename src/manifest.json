@@ -21,6 +21,7 @@
       "skeleton/",
       "tests/",
       "other/"
+      ".run/"
     ]
   },
   "moulinette": {
