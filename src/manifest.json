@@ -20,7 +20,7 @@
     "include": [
       "skeleton/",
       "tests/",
-      "other/"
+      "other/",
       ".run/"
     ]
   },
