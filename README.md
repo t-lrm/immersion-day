@@ -7,20 +7,20 @@ If you want to know more about how this repo works, check out [documentation][do
 
 ## Setup
 
-## Host
+### Host
 
 As an organizer, you should:
 1. run `./src/build/build.sh`,
 2. wait until you see Docker container is running.
 
-## Client
+### Client
 
 Now for each client computer:
 1. boot the computer on any image (you can leave the default one),
 2. login with:
     - username: `epita`
     - password: *(leave empty)*
-3. then run this command: `curl <host ip>:42000 | bash`[^1].
+3. then run this command: `curl <host ip>:42000 | bash`.[^1]
 
 Once done, you should see a popup in fullscreen with a welcome message.
 If you want to exit fullscreen, you can press `mod + f`.
