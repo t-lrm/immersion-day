@@ -10,8 +10,9 @@ If you want to know more about how this repo works, check out [documentation][do
 ### Host
 
 As an organizer, you should:
-1. run `./src/build/build.sh`,
-2. wait until you see Docker container is running.
+1. clone this repo using SSH,
+2. run `./src/build/build.sh`,
+3. wait until you see Docker container is running.
 
 ### Client
 
