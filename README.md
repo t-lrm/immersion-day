@@ -2,10 +2,14 @@
 
 ## Overview
 
-This repository builds and distributes the practicals used during "Journées d'Immersion" (it may also be used for "Stages de seconde").
+This repository builds and distributes the practicals used during "Journées d'Immersion" (JI).
+Note that it may also be used for "Stages de seconde".
 If you want to know more about how this repo works, check out [documentation][documentation] where the operation of the repo is detailed.
 
 ## Setup
+
+This repo uses a system of host/client to set up the computers and ensure the organizer has as little commands to type as possible.
+To make this work, one the organizer needs to boot it's session and follow the [host instructions](#host)
 
 ### Host
 
@@ -17,7 +21,7 @@ As an organizer, you should:
 ### Client
 
 Now for each client computer:
-1. boot the computer on any image (you can leave the default one),
+1. boot the computer using any image (you can leave the default one),
 2. login with:
     - username: `epita`
     - password: *(leave empty)*
@@ -39,23 +43,23 @@ The main configuration file is `src/manifest.json`. It determines:
 These are the steps to contribute to this repo:
 1. Create a branch with this format: `<your-name>/<feature-or-fix-name>`.
 2. Make your changes on that branch and push your commits.
-3. Open a merge request targeting main.
+3. Open a merge request targeting `main`.
 4. Your changes will be reviewed and merged if everything looks good.
 
 If you want to create a new practical, see [practicals][practicals] for the expected repository structure and setup.
 
 ## Troubleshooting
 
-If you encounter any errors or unexpected behaviour, read [troubleshooting][troubleshooting].
-It may give you some clue about your issue.
+If you encounter any errors or unexpected behavior, read [troubleshooting][troubleshooting].
+It may give you some clues about your issue.
 
 ## Contact
 
-If you have any question, you can contact me via:
+If you have any questions, you can contact me via:
 - Email: `timothee.le-roux-maertens@epita.fr`
 - Discord: `baunky`
 
-[^1]: *To show the host ip you can either check the i3 status bar or run `hostname -I`.*
+[^1]: *To show the host IP you can either check the i3 status bar or run `hostname -I`.*
 
 [documentation]: ./docs/documentation.md
 [practicals]: ./docs/practicals.md
