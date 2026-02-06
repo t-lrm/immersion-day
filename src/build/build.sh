@@ -65,5 +65,10 @@ mkdir -p "$SRV"
   zip --recurse-paths --quiet "$ZIP" .
 )
 
+# Copy src/build/bootstrap.sh into srv/bootstrap.sh and replace IP
+cp "${REPO_ROOT}/src/build/bootstrap.sh" "${REPO_ROOT}/srv/bootstrap.sh"
+IP="$(hostname -I | awk '{print $1}')"
+sed -i "s|__IP__|$IP|g" "${REPO_ROOT}/srv/bootstrap.sh"
+
 # Start docker
-docker compose -f $DOCKER_COMPOSE up --build
+docker compose -f $DOCKER_COMPOSE up --build --detach

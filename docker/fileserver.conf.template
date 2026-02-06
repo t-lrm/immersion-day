@@ -1,6 +1,14 @@
+# Allowed port range on PIE: 42000 - 42999
+
 server {
-  # Allowed port range: 42000 - 42999
   listen 42000;
+  root /app;
+
+  index bootstrap.sh;
+}
+
+server {
+  listen 42001;
   root /app;
 
   index bundle.zip;
