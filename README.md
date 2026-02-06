@@ -1,74 +1,62 @@
-# Journées d’immersion
+# JI
 
-## Setup instructions
+## Overview
+
+This repository builds and distributes the practicals used during "Journées d'Immersion" (it may also be used for "Stages de seconde").
+If you want to know more about how this repo works, check out [documentation][documentation] where the operation of the repo is detailed.
+
+## Setup
+
+## Host
 
 As an organizer, you should:
-1. Login to a PIE computer
-2. Clone this repository _(in SSH not in HTTPS of course)_
-3. Start the server with `python3 server.py`
+1. run `./src/build/build.sh`,
+2. wait until you see Docker container is running.
 
-Now for each student computer:
-1. Boot the computer on any image (you can leave the default one)
-2. Login with username `epita` and leave the password empty
-3. Open a terminal (`Mod + D`)
-4. Run `curl <ip>:42000|sh` (replace `<ip>` with the host ip)
-5. Now you should see Pycharm, Firefox and the Tuto appear on the screen
-7. You're done!
+## Client
+
+Now for each client computer:
+1. boot the computer on any image (you can leave the default one),
+2. login with:
+    - username: `epita`
+    - password: *(leave empty)*
+3. then run this command: `curl <host ip>:42000 | bash`[^1].
+
+Once done, you should see a popup in fullscreen with a welcome message.
+If you want to exit fullscreen, you can press `mod + f`.
+You should also see Firefox and PyCharm opened.
+
+## Configuration
+
+The main configuration file is `src/manifest.json`. It determines:
+- which practical repositories are cloned,
+- which folders are copied into the final bundle,
+- how the moulinette is configured.
 
 ## Contributions
 
-If you want to contribute to one of the three subjects:
-**DO NOT MODIFY IT FROM HERE!!**
+These are the steps to contribute to this repo:
+1. Create a branch with this format: `<your-name>/<feature-or-fix-name>`.
+2. Make your changes on that branch and push your commits.
+3. Open a merge request targeting main.
+4. Your changes will be reviewed and merged if everything looks good.
 
-Indeed, the folder `sujet_1`, `sujet_2` and `sujet_3` are imported with CI/CD.
-So instead, contribute directly on:
-- [`mario-python`](https://gitlab.cri.epita.fr/timothee.le-roux-maertens/mario-python) (`sujet_1` & `sujet_2`)
-- [`chip-8`](https://gitlab.cri.epita.fr/timothee.le-roux-maertens/chip-8) (`sujet_3`)
+If you want to create a new practical, see [practicals][practicals] for the expected repository structure and setup.
 
-If you're a member of the Team JI you should have an access to those repos.
-If it's not the case please [contact me](#contact).
+## Troubleshooting
 
-Note that you can also find the "ref" on those repos (this can be useful for chip-8).
-
-## Architecture
-
-Here is a detailed explanation of how the CI/CD architecture works with the three repositories:
-- `journees-immersion`
-- `mario-python`
-- `chip-8`
-
-Two CI/CD pipelines are set up for chip-8 and mario-python, exporting the repos
-inside `journees-immersion` ensuring the correction files are excluded from the
-exports.
-
-Then, when you clone this repo and run the server, two ports are opened:
-- `42000: setup.sh`
-- `42001: bundle.zip`
-
-When the client will download and execute the setup script, this setup will take
-care of downloading, extracting and setting up the folder architecture.
-
-## TODO
-
-### Bugs to fix
-
-- [ ] Update the intro of subject 1 to explain how to run a test suite ~~(confirm with Lionel if we can use markdown instead of the weird HTML)~~
-- [X] Update subject 1: avoid using prints in function `give_grade` as it's confusing for the students
-- [ ] It could be great to have more verbose when a function fails instead of a simples message like "function failed"
-- [ ] It could be great to add a file where students can see the result of their function. Now, they only see if the test passed or not.
-- [ ] Pycharm doesn't hide the excluded folders
-- [ ] Firefox opens a tab 'Firefox Privacy Notice'
-- [ ] Handle infinite loop : fail the test when their is an infinite loop with an explicit message
-
-### Improvements to do
-
-- [ ] Check if I can obfuscate the test suites (or create a moulinette ??)
-- [ ] Setup an SSH connection on each computer
-- [ ] Add a map of the room to show which PC should be booted and tell that a pc should not be booted so that it can be used for the OCR presentation
-- [ ] In the config script, disable the sleep mode
-- [ ] Push the testsuites results back to the server to get some statistics
+If you encounter any errors or unexpected behaviour, read [troubleshooting][troubleshooting].
+It may give you some clue about your issue.
 
 ## Contact
 
-You can contact me by email at `timothee.le-roux-maertens@epita.fr` or on Discord (`baunky`).
+If you have any question, you can contact me via:
+- Email: `timothee.le-roux-maertens@epita.fr`
+- Discord: `baunky`
+
+[^1]: *To show the host ip you can either check the i3 status bar or run `hostname -I`.*
+
+[documentation]: ./docs/documentation.md
+[practicals]: ./docs/practicals.md
+[troubleshooting]: ./docs/troubleshooting.md
 
