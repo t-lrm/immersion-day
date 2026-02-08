@@ -1,33 +1,124 @@
-# ci-scripts
+# Practicals
 
 ## Overview
 
-This folder contains the script used by the Gitlab CI/CD to imports every practicals.
+This file contains everything you need to know to create a new practical repo.
 
-## Import a practical
+## Gitlab
 
-Each practical must have this file architecture:
+First, you need to create a new repository on [gitlab.cri.epita.fr](https://gitlab.cri.epita.fr).
+
+Then you need to do something boring: add every member of the Team JI...[^1]
+Indeed, the organizer who will build the repo needs to have the correct access to be able to clone the repo.
+So in your repo, go to `Manage > Members` and click on `Invite members`.
+Then type the login of every member of the Team JI, giving them at least the role `Developer`.
+You don't need to set an expiration date.
+
+## Architecture
+
+Now that you have your repo set up, you need to use the following architecture:
 ```sh
 .
 ├── skeleton/
 ├── ref/
-├── tests/
 ├── other/
+├── tests/
+├── scripts/
+├── .run/
+├── .gitignore
+├── pyproject.toml
 ├── README.md
 ├── requirements.txt
 └── subject.html
 ```
 
-Considering this file architrecture, we will import those folders:
-- `skeleton`
-- `test`
-- `other`
+Only those folders will be imported by the build (you can change this in `src/manifest.json`):
+- `skeleton/`
+- `other/`
+- `tests/`
+- `scripts/`
+- `.run/`
 
-And the file `subject.html` will be imported inside the `subjects` folder.
+The build will also import the `subject.html`.
 
-### CI/CD Token
+## Folder descriptions
 
-In your practical repo, you must set a token.
-In Gitlab, go to `Settings > CI/CD > Job token permissions`.
-Then inside `CI/CD job token allowlist`, add this repo (`timothee.le-roux-maertens/ji`) with default permissions.
+The folder `skeleton` contains the code as it will be distributed to the student.
+You need to put all files to complete and all files already completed.
 
+The folder `ref` contains the solutions of the files to complete.
+We should be able to simply copy the content of `ref` into `skeleton` to get 100% on the test suite.
+
+The folder `other` can contain anything that needs to be distributed to the student.
+It may be some resources, or some code snippets.
+
+The folder `tests` contains the test suite that will be used by the student.
+You need to make sure you're using correctly the [moulinette](https://gitlab.cri.epita.fr/timothee.le-roux-maertens/moulinette-ji/).
+As it's a custom package, it's a bit different to set it up, but everything is explained in its documentation.
+Also, you can check how existing repositories use the moulinette ([chip-8](https://gitlab.cri.epita.fr/timothee.le-roux-maertens/chip-8)).
+
+The folder `scripts` contains bash scripts that will be used as run configurations in PyCharm.
+
+The folder `.run` contains the PyCharm run configuration itself.
+You shouldn't edit it yourself; you need to generate it directly in PyCharm.[^2]
+
+You can create any other directory that you find useful, but they won't be imported without changing `src/manifest.json`.
+If your repo doesn't contain some folders that should be imported, it won't fail the build; it will simply skip them.
+However, you're still required to have a subject.html file.
+
+## Python packages
+
+### File imports
+
+As you will need to import files in your projects, we need to set up a convention to avoid missing packages (because even if it works on your machine, it may not work on others).
+So the convention is that we consider that we execute each file from the repo root.
+
+Let's imagine you have two files: `skeleton/main.py` and `skeleton/utils.py`.
+If you want to import `utils` inside `main`, you will write it like this:
+```py
+import skeleton.utils
+```
+You can see that we specify the full path even if the two files are contained in the same folder.
+
+So, to run your project correctly, you will need to run it from the repo root using the `-m` flag.
+Let's say you want to run the file `tests/test.py`:
+```py
+python -m tests.test
+```
+And you need to use the same syntax inside your `scripts/` folder.
+
+### Package imports
+
+You may need to import some packages that are not built-in Python. The best way to manage this is to use [virtual environments](https://docs.python.org/3/library/venv.html) (venv).
+But as we are on NixOS, venvs are not always working and you may encounter unexpected behavior (pygame not opening windows, for example).
+So to prevent this, we use [Nix flakes](https://nixos.wiki/wiki/flakes).
+As flakes can be very hard to understand, you're encouraged to copy one from an existing repository and customize it (or you can also try to get help from the repo maintainer).
+
+The best solution for now is simply to create both a `flake.nix` and a `requirements.txt` file so that you can choose either to use venvs or flakes according to your development environment.
+
+A `requirements.txt` file is used to list all the packages needed to run your repository.
+You can generate one using the command `pip freeze > requirements.txt` (make sure only useful packages are exported).
+
+## Subject
+
+The `subject.html` file is the subject of the practical where everything is explained.
+For now, those files were generated by the ACDC toolchain. As we don't want to depend on a private toolchain, we are currently developing our own toolchain.
+Later, we will use it to create the practical subjects.
+
+## Formatting
+
+As we are good programmers, we like formatting files and we should use `pyproject.toml` to set up the [Black formatter](https://pypi.org/project/black/).
+You simply need to run `black .` at the root of your repo (don't forget to install it with pip and add it to your requirements file).
+We use `pyproject.toml` only to set the line length to 120:
+```toml
+[tool.black]
+line-length = 120
+```
+
+Doing this is not mandatory, but it's highly recommended to keep clear and understandable code.[^3]
+
+[^1]: We could create a group including every member of the Team JI, but we need to ask the Forge first.
+
+[^2]: You can check the official [PyCharm documentation](https://www.jetbrains.com/help/pycharm/run-debug-configuration.html).
+
+[^3]: Actually, the best way to format files is to set up a [pre-commit](https://pre-commit.com/), but it's a bit overkill here

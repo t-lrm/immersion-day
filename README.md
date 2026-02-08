@@ -25,7 +25,7 @@ Now for each client computer:
 2. login with:
     - username: `epita`
     - password: *(leave empty)*
-3. then run this command: `curl <host ip>:42000 | bash`.[^1]
+3. then run this command: `curl <host-ip>:42000 | bash`.[^1]
 
 Once done, you should see a popup in fullscreen with a welcome message.
 If you want to exit fullscreen, you can press `mod + f`.
@@ -43,8 +43,9 @@ The main configuration file is `src/manifest.json`. It determines:
 These are the steps to contribute to this repo:
 1. Create a branch with this format: `<your-name>/<feature-or-fix-name>`.
 2. Make your changes on that branch and push your commits.
-3. Open a merge request targeting `main`.
-4. Your changes will be reviewed and merged if everything looks good.
+3. Don't forget to update the documentation!
+4. Open a merge request targeting `main`.
+5. Your changes will be reviewed and merged if everything looks good.
 
 If you want to create a new practical, see [practicals][practicals] for the expected repository structure and setup.
 
@@ -52,6 +53,10 @@ If you want to create a new practical, see [practicals][practicals] for the expe
 
 If you encounter any errors or unexpected behavior, read [troubleshooting][troubleshooting].
 It may give you some clues about your issue.
+
+## Todo
+
+Check [todo][todo].
 
 ## Contact
 
@@ -64,4 +69,5 @@ If you have any questions, you can contact me via:
 [documentation]: ./docs/documentation.md
 [practicals]: ./docs/practicals.md
 [troubleshooting]: ./docs/troubleshooting.md
+[todo]: ./docs/todo.md
 
