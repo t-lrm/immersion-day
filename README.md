@@ -31,8 +31,11 @@ Once done, you should see a pop-up in full screen with a welcome message.
 If you want to exit fullscreen, you can press `Mod + F`.
 You should also see Firefox and PyCharm opened.
 
-**Warning: the bootstrap script will use `~/ji` as the default folder.**
+**Warnings:**
+1. The bootstrap script will use `~/ji` as the default folder.
 If you want to test the client script on you personal computer and already have this folder, it could erase some of it's content.
+2. It may also overwrite your PyCharm configuration files in `~/.config/JetBrains/PyCharmXXXX.X`.
+Make sure to back it up or log in to link the configuration to your account.
 
 ## Configuration
 
