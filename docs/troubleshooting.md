@@ -26,7 +26,7 @@ fileserver-1  | YYYY/MM/DD HH:MM:SS [emerg] 1#1: still could not bind()
 fileserver-1  | nginx: [emerg] still could not bind()
 ```
 
-This means that the nginx Docker container failed to bind the given ports on `docker/fileserver.conf.template`. All you have to do is modify the used port in:
+This means that the nginx Docker Container failed to bind the given ports on `docker/fileserver.conf.template`. All you have to do is modify the used port in:
 - `docker/fileserver.conf.template`
 - `src/build/bootstrap.sh`
 
@@ -39,6 +39,7 @@ This means that the nginx Docker container failed to bind the given ports on `do
 If you tried to log in with:
 - username: `epita`
 - password: *empty*
+
 and it still doesn't work, it means the sessions were not activated.
 
 This is not directly linked to this repo because it's a problem of the Forge.
@@ -49,7 +50,7 @@ You need to contact Lionel as soon as possible and pray that the Forge answers q
 #### Error when trying to download the zip
 
 When you encounter an error when running the curl command, this can come from different factors:
-1. Check that the server is running. On the host computer, check the status of the Docker container with `docker ps`.
+1. Check that the server is running. On the host computer, check the status of the Docker Container with `docker ps`.
 2. Make sure you're using curl on the correct IP and port:
     - You can run `ip add` to check the full IP config.
     - Check the port used in `docker/fileserver.conf.template`

@@ -9,9 +9,9 @@ This file contains everything you need to know to create a new practical repo.
 First, you need to create a new repository on [gitlab.cri.epita.fr](https://gitlab.cri.epita.fr).
 
 Then you need to do something boring: add every member of the Team JI...[^1]
-Indeed, the organizer who will build the repo needs to have the correct access to be able to clone the repo.
-So in your repo, go to `Manage > Members` and click on `Invite members`.
-Then type the login of every member of the Team JI, giving them at least the role `Developer`.
+Indeed, the organizer who will build the repo needs to have the correct access to be able to clone it.
+So in your repo (inside the Gitlab web interface), go to `Manage > Members` and click on `Invite members`.
+Then type the login of every member of the Team JI, giving them at least the role `Developer`.[^2]
 You don't need to set an expiration date.
 
 ## Architecture
@@ -57,10 +57,10 @@ You need to make sure you're using correctly the [moulinette](https://gitlab.cri
 As it's a custom package, it's a bit different to set it up, but everything is explained in its documentation.
 Also, you can check how existing repositories use the moulinette ([chip-8](https://gitlab.cri.epita.fr/timothee.le-roux-maertens/chip-8)).
 
-The folder `scripts` contains bash scripts that will be used as run configurations in PyCharm.
+The folder `scripts` contains bash scripts that will be used as run configurations in PyCharm.[^3]
 
 The folder `.run` contains the PyCharm run configuration itself.
-You shouldn't edit it yourself; you need to generate it directly in PyCharm.[^2]
+You shouldn't edit it yourself; you need to generate it directly in PyCharm.[^4]
 
 You can create any other directory that you find useful, but they won't be imported without changing `src/manifest.json`.
 If your repo doesn't contain some folders that should be imported, it won't fail the build; it will simply skip them.
@@ -86,6 +86,7 @@ Let's say you want to run the file `tests/test.py`:
 python -m tests.test
 ```
 And you need to use the same syntax inside your `scripts/` folder.
+Again, do not hesitate to check how other repo are built.
 
 ### Package imports
 
@@ -115,10 +116,15 @@ We use `pyproject.toml` only to set the line length to 120:
 line-length = 120
 ```
 
-Doing this is not mandatory, but it's highly recommended to keep clear and understandable code.[^3]
+Doing this is not mandatory, but it's highly recommended to keep clear and understandable code.[^5]
 
-[^1]: We could create a group including every member of the Team JI, but we need to ask the Forge first.
+[^1]: We could create a Gitlab group including every member of the Team JI, but we need to ask the Forge first.
 
-[^2]: You can check the official [PyCharm documentation](https://www.jetbrains.com/help/pycharm/run-debug-configuration.html).
+[^2]: You can copy the list of members on existing repos ([chip-8](https://gitlab.cri.epita.fr/timothee.le-roux-maertens/chip-8) for example).
 
-[^3]: Actually, the best way to format files is to set up a [pre-commit](https://pre-commit.com/), but it's a bit overkill here
+[^3]: The reason we don't use Python files is because PyCharm will fail to find an interpreter.
+Also, it offers more control and more possibilites for future changes.
+
+[^4]: You can check the official [PyCharm documentation](https://www.jetbrains.com/help/pycharm/run-debug-configuration.html).
+
+[^5]: Actually, the best way to format files is to set up a [pre-commit](https://pre-commit.com/), but it's a bit overkill here (and not everyone know how to use it).
