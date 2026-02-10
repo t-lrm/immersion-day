@@ -11,7 +11,7 @@ If you want to know more about how this repo works, check out [documentation][do
 This repo uses a host/client system to set up the computers and ensure the organizer has as little commands to type as possible.
 To make this work, one of the organizer needs to boot their session and follow the [host instructions](#host)
 
-First you need to run `nix develop` at the root of the repo to install developement dependencies.
+First you need to run `nix develop` at the root of the repo to install build dependencies.
 
 ### Host
 
