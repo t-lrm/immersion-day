@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT="${HOME}/ji"
 ZIP="bundle.zip"
-IP="192.168.1.17"
+IP="__IP__"
 PORT="42001"
 
 mkdir "$ROOT"

@@ -3,5 +3,7 @@ services:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    network_mode: host
+    ports:
+      - "42000:42000"
+      - "42001:42001"
 
