@@ -67,7 +67,7 @@ mkdir -p "$SRV"
 
 # Copy src/build/bootstrap.sh into srv/bootstrap.sh and replace IP
 cp "${REPO_ROOT}/src/build/bootstrap.sh" "${REPO_ROOT}/srv/bootstrap.sh"
-IP="$(hostname -I | awk '{print $1}')"
+IP="$(ip route get 1 | awk '{print $7; exit}')"
 sed -i "s|__IP__|$IP|g" "${REPO_ROOT}/srv/bootstrap.sh"
 
 # Start docker

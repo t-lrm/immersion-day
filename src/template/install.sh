@@ -7,7 +7,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/bin/env.sh"
 
 firefox --new-window "${ROOT}/static/subjects"
 
-nix profile add .#default
+# 'add' doesn't work on PIE computers
+nix profile install .#default
 
 nohup pycharm &>/dev/null &
 

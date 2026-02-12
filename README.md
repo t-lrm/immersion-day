@@ -11,14 +11,14 @@ If you want to know more about how this repo works, check out [documentation][do
 This repo uses a host/client system to set up the computers and ensure the organizer has as little commands to type as possible.
 To make this work, one of the organizer needs to boot their session and follow the [host instructions](#host)
 
-First you need to run `nix develop` at the root of the repo to install build dependencies.
-
 ### Host
 
 As an organizer, you should:
 1. clone this repo _(via SSH, not HTTPS, of course)_,
-2. run `./src/build/build.sh`,
-3. wait until you see that the Docker Container is running.
+2. `cd` into it (`cd ji`)
+3. run `nix develop` to install build dependencies
+4. run `./src/build/build.sh` to start the build,
+5. wait until the command completes.
 
 ### Client
 
