@@ -28,6 +28,7 @@ fileserver-1  | nginx: [emerg] still could not bind()
 
 This means that the nginx Docker Container failed to bind the given ports on `docker/fileserver.conf.template`. All you have to do is modify the used port in:
 - `docker/fileserver.conf.template`
+- `docker/docker-compose.yml`
 - `src/build/bootstrap.sh`
 
 **Warning: the allowed TCP/UDP port range in the PIE is from `42000` to `42999`.**
