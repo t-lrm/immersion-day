@@ -22,12 +22,12 @@
 
     moulinetteji = python.pkgs.buildPythonPackage {
       pname = "moulinetteji";
-      version = "0.1.0";
+      version = "0.2.0";
       src = ./moulinette;
 
       pyproject = true;
       build-system = with python.pkgs; [ setuptools wheel ];
-      propagatedBuildInputs = with python.pkgs; [ pyfiglet ];
+      propagatedBuildInputs = with python.pkgs; [ pyfiglet jinja2 ];
 
       # prevents fail on missing tests
       doCheck = false;

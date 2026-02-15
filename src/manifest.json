@@ -4,17 +4,17 @@
       {
         "name": "subject_1",
         "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/mario-python-1.git",
-        "branch": "main"
+        "branch": "feat/new-mouli"
       },
       {
         "name": "subject_2",
         "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/mario-python-2.git",
-        "branch": "main"
+        "branch": "feat/new-mouli"
       },
       {
         "name": "subject_3",
         "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/chip-8.git",
-        "branch": "tlrm/rework"
+        "branch": "feat/new-mouli"
       }
     ],
     "include": [
@@ -27,6 +27,6 @@
   },
   "moulinette": {
       "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/moulinette-ji.git",
-      "branch": "main"
+      "branch": "feat/improvements"
   }
 }
