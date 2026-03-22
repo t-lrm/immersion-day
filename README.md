@@ -16,7 +16,7 @@ To make this work, one of the organizer needs to boot their session and follow t
 As an organizer, you should:
 1. clone this repo _(via SSH, not HTTPS, of course)_,
 2. `cd` into it (`cd ji`)
-3. run `nix develop` to install build dependencies
+3. run `nix develop` to install build dependencies (it may ask for your SSH key password)
 4. run `./src/build/build.sh` to start the build,
 5. wait until the command completes.
 
@@ -38,6 +38,17 @@ You should also see Firefox and PyCharm opened.
 If you want to test the client script on you personal computer and already have this folder, it could erase some of it's content.
 2. It may also overwrite your PyCharm configuration files in `~/.config/JetBrains/PyCharmXXXX.X`.
 Make sure to back it up or log in to link the configuration to your account.
+
+## Statistics
+
+At the end of the JI session, you can collect statistics an retrieve the result of the practicals as JSON files.
+Each client computer serves a folder on port `42999` containing the moulinette results for each practical.
+
+You can collect all of these JSON files by running `./statistics/collect.sh`.
+Then, to get a nice summary, run:
+```sh
+python3 statistics/compute.py reports/YYYY-MM-DD
+```
 
 ## Configuration
 
