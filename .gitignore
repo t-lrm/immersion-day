@@ -5,6 +5,10 @@
 .venv
 __pycache__
 
+docker/logs/
+
+reports
+
 src/template/practicals/*
 src/template/moulinette/*
 src/template/static/subjects/*

@@ -6,4 +6,5 @@ services:
     ports:
       - "42000:42000"
       - "42001:42001"
-
+    volumes:
+      - ./logs:/var/log/nginx

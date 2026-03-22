@@ -1,8 +1,15 @@
 # Allowed port range on PIE: 42000 - 42999
 
+log_format ips '$remote_addr';
+
 server {
   listen 42000;
   root /app;
+
+  # log incoming ips
+  location = /bootstrap.sh {
+    access_log /var/log/nginx/ips.log ips;
+  }
 
   index bootstrap.sh;
 }
