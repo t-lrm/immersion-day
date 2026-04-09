@@ -7,6 +7,7 @@
 - [ ] Provide a file where students can see the output of their function, not just pass/fail.
 - [ ] Prevent Firefox from opening the "Firefox Privacy Notice" tab.
 - [ ] Detect infinite loops and fail tests with a clear message.
+- [ ] Add some comments in the ref code of chip-8.
 
 ## Features
 
