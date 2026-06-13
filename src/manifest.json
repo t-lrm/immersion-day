@@ -15,6 +15,11 @@
         "name": "subject_3",
         "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/chip-8.git",
         "branch": "tlrm/rework"
+      },
+      {
+        "name": "subject_4",
+        "url": "git@gitlab.cri.epita.fr:leon.roullin/flappy-bird.git",
+        "branch": "main"
       }
     ],
     "include": [
