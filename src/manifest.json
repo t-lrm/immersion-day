@@ -3,7 +3,7 @@
     "sources": [
       {
         "name": "flappy_bird",
-        "url": "git@gitlab.cri.epita.fr:leon.roullin/flappy_bird.git",
+        "url": "git@gitlab.cri.epita.fr:leon.roullin/flappy-bird.git",
         "branch": "main"
       }
     ],
