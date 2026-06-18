@@ -2,19 +2,9 @@
   "practicals": {
     "sources": [
       {
-        "name": "subject_1",
-        "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/mario-python-1.git",
-        "branch": "feat/new-mouli"
-      },
-      {
-        "name": "subject_2",
-        "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/mario-python-2.git",
-        "branch": "feat/new-mouli"
-      },
-      {
-        "name": "subject_3",
-        "url": "git@gitlab.cri.epita.fr:timothee.le-roux-maertens/chip-8.git",
-        "branch": "feat/new-mouli"
+        "name": "flappy_bird",
+        "url": "git@gitlab.cri.epita.fr:leon.roullin/flappy_bird.git",
+        "branch": "main"
       }
     ],
     "include": [
